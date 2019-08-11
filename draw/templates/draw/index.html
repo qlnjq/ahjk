@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
+
     <!--   text editor api   -->
     <link href="https://cdn.quilljs.com/1.2.6/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.2.6/quill.min.js"></script>
@@ -25,14 +25,14 @@
         align-items: center;
         background-color: #DECFD3;
       }
-      
+
       .ql-toolbar{
         width: 100%;
         text-align: center;
 /*         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05); */
       }
-      
-      #editor{ 
+
+      #editor{
         height: 92vh;
         width: 80%;
         border-top-left-radius: 18px;
@@ -42,22 +42,22 @@
         font-size: 17px;
         box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.10);
       }
-     
+
       .ql-editor, pre.ql-syntax {
         background-color: #FFFFFF;
         border-top-left-radius: 25px;
         border-top-right-radius: 25px;
         margin: 30px 30px;
       }
-      
+
        .ql-snow {
         background-color: #FFFFFF;
       }
-      
+
       #title-left {
         padding: 23px 0px 1.5px 35px;
       }
-      
+
       input[name="title-doc"]{
         border: 0px;
         border-radius: 6px;
@@ -70,13 +70,13 @@
         box-sizing: border-box;
         transition: 0.3s;
       }
-      
+
       input[name="title-doc"]:focus{
         border: 2px solid #aaa;
         border-color: #c0c4c8;
         box-shadow: 0 0 10px 0 #c0c4c8;
       }
-      
+
       #tags-row {
         padding: 4px 0px 0px 9px;
         font-family: PT Sans;
@@ -84,13 +84,13 @@
         flex-direction: row;
         display:flex;
       }
-      
+
       #tag-btn, #new-version, #all-version {
         border-radius: 100px;
         padding-right: 20px;
         padding-left: 20px;
       }
-      
+
       #add-btn{
         width: 32px;
         height: 32px;
@@ -99,71 +99,71 @@
         text-align: center;
         line-height: 1.42857;
       }
-      
+
       #wrap-add, #add-input{
         display:inline;
         padding-left: 4px;
       }
-      
+
       input[name = "add-input-box"]{
         width: 8em;
       }
-      
+
       #wrap-title-right{
         display:inline;
         padding-left: 17px;
       }
-      
+
       #title-right{
         display: flex;
         align-items: center;
         justify-content: flex-end;
         margin: -37px;
       }
-      
+
       .btn:hover {
         color: #FFF;
       }
-      
+
       .popover {
         text-align: center;
       }
-      
+
       .see-files {
         font-style: italic;
         text-decoration: underline;
       }
-      
+
       #remove-tag {
         border-radius: 16px;
         font-size: 12px;
       }
-      
+
 /*       .popover {
         border: 0px;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.10);
       }
-      
+
       .bs-popover-auto[x-placement^=bottom]>.arrow::before, .bs-popover-top>.arrow::before {
         border: 0px;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.10);
       } */
 
-      
-/*       .add-input i { 
-            position: absolute; 
-        } 
-          
-      .add-input { 
-          width: 100%; 
-          margin-bottom: 10px; 
-      } 
-          
-      .icon { 
-          padding: 10px; 
-          min-width: 40px; 
+
+/*       .add-input i {
+            position: absolute;
+        }
+
+      .add-input {
+          width: 100%;
+          margin-bottom: 10px;
+      }
+
+      .icon {
+          padding: 10px;
+          min-width: 40px;
       }  */
-      
+
     </style>
 
 </head>
@@ -175,28 +175,28 @@
           <div id = "title">
             <input type="text" name="title-doc" value="" placeholder = "Title">
           </div>
-          
+
           <div id = "tags-row">
             <p style = "display: inline; padding-right: 10px;">
               TAG:
             </p>
             <div id = "tags">
-              <button data-toggle="popover" data-html="true" data-placement="bottom" 
+              <button data-toggle="popover" data-html="true" data-placement="bottom"
                       data-content="5 files with this tag <div class='see-files'>see files</div> <br>
                                     <div type='button' class='btn btn-danger btn-sm' id='remove-tag'>&#10005; remove tag</div>"
                       type="button" class="btn btn-dark btn-sm" id = "tag-btn">test1</button>
               <button type="button" class="btn btn-dark btn-sm" id = "tag-btn">test2</button>
               <button type="button" class="btn btn-dark btn-sm" id = "tag-btn">test3</button>
             </div>
-            
+
             <div id = "wrap-add">
-              
+
               <button type="button" class="btn btn-light btn-circle btn-sm" aria-hidden="true" id = "add-btn">
                 <i class="fa fa-plus"></i>
               </button>
-              
+
             </div>
-            
+
         <!--                add tag input box  -->
             <div id = "add-input" style="display:none">
               <input type="text" name="add-input-box" value = "" list="tag-list">
@@ -207,10 +207,10 @@
               </datalist>
       <!--                 <i class="fa fa-plus-square-o icon"></i> -->
             </div>
-            
+
           </div>
         </div>
-        
+
         <div class = "col-md-5" id = "title-right">
           <div id = "wrap-title-right">
             <button type="button" class="btn btn-secondary btn-md" id = "new-version">
@@ -225,20 +225,20 @@
               </button>
           </div>
         </div>
-        
+
       </div>
     </div>
 
     <div class = "editor-body">
       <div id="editor"></div>
     </div>
-  
-    
+
+
 </body>
-  
+
 <script>
-      
-  
+
+
 //---- beginning of editor code from api --
     var toolbarOptions = [
       [{ 'font': [] }],
@@ -259,7 +259,7 @@
 
       ['clean']                                         // remove formatting button
   ];
-  
+
   var Delta = Quill.import('delta');
   var quill = new Quill('#editor', {
       modules: {
@@ -273,7 +273,7 @@
     placeholder: 'Start writing here...',
     theme: 'snow'
   });
-  
+
     // Store accumulated changes
   var change = new Delta();
   quill.on('text-change', function(delta) {
@@ -284,21 +284,21 @@
   setInterval(function() {
     if (change.length() > 0) {
       console.log('Saving changes', change);
-      
+
 // //       Send partial changes
-//       $.post('/savecurr', { 
-//         partial: JSON.stringify(change) 
+//       $.post('/savecurr', {
+//         partial: JSON.stringify(change)
 //       });
 
 // //       Send entire document
-//       $.post('/savecurr', { 
+//       $.post('/savecurr', {
 //         doc: JSON.stringify(quill.getContents())
 //       });
-      
+
       change = new Delta();
     }
   }, 5*1000);
-  
+
 // Check for unsaved data
 window.onbeforeunload = function() {
   if (change.length() > 0) {
@@ -317,7 +317,7 @@ window.onbeforeunload = function() {
     }
     return null;
   }
- 
+
   if(getQueryString('version')!== null){
     var storage=window.sessionStorage;
     var versiondata = JSON.parse(storage.getQueryString('version'));
@@ -326,7 +326,7 @@ window.onbeforeunload = function() {
   }
 
   var inputTitle = document.getElementsByName("title-doc")[0];
-  
+
   inputTitle.addEventListener("keyup", function(event) {
       if (event.key === "Enter") {
         if ($(this).is(':focus')){
@@ -335,25 +335,25 @@ window.onbeforeunload = function() {
       }
   })
 
-                            
+
   $( "#add-btn" ).click(function(e){
     $( "#wrap-add" ).hide();
     $("#add-input").show();
   });
-  
 
-  
+
+
   var inputTag = document.getElementsByName("add-input-box")[0];
   var inputTagValue;
   var tags = [];// tags for current version
   var alltags = [];// array store all the tags
- 
+
   inputTag.addEventListener("keyup", function(event) {
       if (event.key === "Enter") {
         inputTagValue = document.getElementsByName("add-input-box")[0].value;
         console.log('enter key is pressed'); // check if enter key is pressed
         if (inputTagValue.length > 0) {
-          
+
           if (inputTagValue[0].match(/^ \s*$/)){
             alert("Invalid input!");
           } else {
@@ -361,7 +361,7 @@ window.onbeforeunload = function() {
             // add a new tag button
             addNewTagHTML(inputTagValue);
           }
-        } 
+        }
         // clear input box
         $('input[name=add-input-box').val('');
         // if nothing is entered, return to add button?
@@ -369,56 +369,56 @@ window.onbeforeunload = function() {
         $("#wrap-add").show();
       }
   });
-  
+
   function addNewTagHTML(newTag) {
     var tag = '<button type="button" class="btn btn-dark btn-sm" id = "tag-btn">'
-                    + newTag 
+                    + newTag
                     + '</button> '
-    
+
     $('#tags').append(tag);
     tags.push(newTag);
     if(alltags.indexOf(newTag) === -1){
       alltags.push(newTag);
     };
   };
-  
-  
+
+
   $( "#new-version" ).click(function(e){
     // save everything as a new entry/file/page in database
   });
-  
+
   $( "#all-version" ).click(function(e){
     // remember to save info then switch to page
     var currentversion = getQueryString('version')||Math.random();
     var title = document.getElementsByName("title-doc")[0].value;
     var text = JSON.stringify(quill.getContents());
-    
-    var oneversion = new Object(); 
+
+    var oneversion = new Object();
     oneversion.title=title;
     oneversion.tag=tags;
     oneversion.text=text;
 
     var storage=window.sessionStorage;
-    
+
     storage[currentversion] = oneversion;
     storage['alltags'] = alltags;
 //     window.location.href='/draw/allVersions';
   });
-  
+
   $(function () {
     $('[data-toggle="popover"]').popover({
       $( "#new-version" ).click(function(e){
     // save everything as a new entry/file/page in database
   });
-      
+
     });
   })
 
 
-  
-   
-  
-  
+
+
+
+
 
 </script>
 </html>
