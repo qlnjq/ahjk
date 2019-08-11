@@ -1,0 +1,89 @@
+  
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>P4 Drawing</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  
+
+    <style type="text/css">
+      .main{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+      }
+      .header{
+        width: 288px;
+        margin-top: 44px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 47px;
+      }
+      
+      #header-row{
+        flex-direction: row;
+        display:flex;
+        width:80vw;
+        margin-top:50px;
+        justify-content:space-between;
+      }
+      
+       #tags-row {
+          font-family: PT Sans;
+          font-size: 1em;
+          flex-direction: row;
+          display:flex;
+      }
+      
+      #tag-btn {
+        border-radius: 100px;
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+    </style>
+
+</head>
+<body class='main'>
+  <div class='header'>
+    Introduction
+  </div>
+  <div id = "header-row">
+    <div id = "tags-row">
+       <p style = "display: inline; padding-right: 10px;">
+        SIMILAR TAG:
+      </p>
+      <div id = "tags">
+        <button data-toggle="popover" data-html="true" data-placement="bottom" 
+                data-content="5 files with this tag <div class='see-files'>see files</div> <br>
+                              <div type='button' class='btn btn-danger btn-sm' id='remove-tag'>&#10005; remove tag</div>"
+                type="button" class="btn btn-dark btn-sm" id = "tag-btn">test1</button>
+        <button type="button" class="btn btn-dark btn-sm" id = "tag-btn">test2</button>
+        <button type="button" class="btn btn-dark btn-sm" id = "tag-btn">test3</button>
+      </div>
+    </div>
+    <div id = "tags-row">
+      <p style = "display: inline; padding-right: 10px;">
+        SORT BY:
+      </p>
+    </div>
+   
+  </div>
+    
+</body>
+  
+<script>
+  
+//   var storage=window.sessionStorage;
+//   console.log(storage);
+  
+</script>
+</html>
