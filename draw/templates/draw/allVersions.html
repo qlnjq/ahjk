@@ -23,8 +23,9 @@
         display:flex;
         flex-direction:column;
         align-items:center;
-        background-color: #d0e7e7;
+        background-color: #FBFBFB;;
       }
+
       .header{
         width: 288px;
         margin-top: 44px;
@@ -57,8 +58,10 @@
       }
 
       .snippet-list{
-        height:70vh;
-        background-color: #FFfFFF;
+        width: 82vw;
+        margin-top:14px;
+        height:65vh;
+        /* background-color: black;  */
         flex-wrap: wrap;
         overflow: scroll;
         border-radius: 18px;
@@ -68,8 +71,8 @@
         width: 43vh;
         height: 38vh;
         /* 35 : 15 */
-        /* background-color: black; */
-        margin: 1vh 1vh 5vh 1vh;
+        background-color: #FFFFFF;
+        margin: 1.5vh 2.0vh 5vh 2.0vh;
         border-radius: 30px;
         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
         cursor: pointer;
@@ -79,7 +82,7 @@
         height: 24.5vh;
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
-        /* background-color: pink; */
+        background-color: white;
       }
 
       #snippet-info{
@@ -87,7 +90,7 @@
         height: 10.5vh;
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
-        /* background-color: blue; */
+        background-color: white;
         box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1);
         padding: 0.9em 1.2em 0 1.2em;
       }
@@ -108,13 +111,29 @@
         display: flex;
         font-size: 10px;
         justify-content: space-between;
+        /* background-color: white; */
       }
 
-      #edit-pen{
+      #edit-pen {
         position: relative;
         left: 38vh;
         top: 2vh;
-        display: none;
+        /* display: none; */
+        visibility: hidden;
+      }
+
+      #select-btn {
+        position: relative;
+        left: 36vh;
+        top: 1vh;
+        visibility: visible;
+        filter: invert(35%);
+      }
+
+      #snippet-text{
+        padding: 0em 2em 0em 2em;
+        overflow:scroll;
+        height: 20vh;
       }
 
       #snippet-tag {
@@ -127,6 +146,29 @@
         line-height: .5;
         border-radius: .2rem;
       }
+
+      .compare-row, .compare-row2 {
+        margin-top: 1em;
+        align-items: center;
+      }
+
+      #compare-btn, #confirm-btn, #cancel-btn {
+        background-color: #858585;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        border-radius: 27px;
+        color: white;
+      }
+
+      #confirm-btn, #cancel-btn {
+        margin-right: 30px;
+        margin-left: 30px;
+      }
+
+      #compare-btn:active {
+        border-color: #ababab;
+        box-shadow: inset 0 10px 10px rgba(0, 0, 0, .125);
+      }
+
     </style>
 
 </head>
@@ -138,8 +180,9 @@
 
       <div id = "tags">
         <p style = "display: inline; padding-right: 10px;">
-        SIMILAR TAG:
+        SIMILAR TAGS:
         </p>
+        <!-- ??? data-toggle -->
         <button data-toggle="popover" data-html="true" data-placement="bottom"
                 data-content="5 files with this tag <div class='see-files'>see files</div> <br>
                               <div type='button' class='btn btn-danger btn-sm' id='remove-tag'>&#10005; remove tag</div>"
@@ -155,8 +198,10 @@
 
         <div style = "display:inline">
           <select name = "sort-list-box">
-            <option value = "Date Modified">Date Modified</option>
-            <option value = "Date Created">Date Created</option>
+            <option value = "Date Created">Date Created - Oldest to Newest</option>
+            <option value = "Date Created">Date Created - Newest to Oldest</option>
+            <option value = "Date Modified">Date Modified - Oldest to Newest</option>
+            <option value = "Date Created">Date Modified - Newest to Oldest</option>
             <option value = "Alpha"> Alphabetical Order</option>
           </select>
         </div>
@@ -168,8 +213,13 @@
     <div class = "snippet-list">
       <div id = "one-doc">
         <div id = "snippet">
-          <i class="fa fa-pencil-square-o" aria-hidden="true" id = "edit-pen"></i>
-          <!-- preview of snippet -->
+          <div id = "icon-area">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" id = "edit-pen"></i>
+            <!-- <i class="fa fa-plus-circle" aria-hidden="true" id = "select-btn"></i> -->
+          </div>
+          <div id = "snippet-text">
+            Illum dolore eu: feugiat nulla facilisis at vero eros. Quod mazim placerat facer possim assum typi non habent claritatem insitam est! Qui nunc nobis videntur parum clari fiant sollemnes in. Accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis, dolore te feugait.
+          </div>
         </div>
         <div id = "snippet-info">
           <div id = "snippet-title">
@@ -203,30 +253,143 @@
           </div>
         </div>
       </div>
+
       <div id = "one-doc">
         <div id = "snippet">
-
+          <div id = "icon-area">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" id = "edit-pen"></i>
+          </div>
+          <div id = "snippet-text">
+            Congue nihil imperdiet doming id quod mazim placerat facer possim assum typi non habent. Ad minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis; nisl ut aliquip. Ii legunt saepius claritas est etiam processus dynamicus qui sequitur mutationem consuetudium lectorum? Decima et quinta; decima eodem modo typi qui nunc nobis videntur parum clari fiant sollemnes in. Liber tempor cum soluta nobis eleifend, option claritatem insitam est. Dolor sit amet consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut laoreet.
+          </div>
         </div>
         <div id = "snippet-info">
-
+          <div id = "snippet-title">
+            Title 2
+          </div>
+          <div id = "snippet-tag">
+            <p style = "display: inline-block; margin-right: 10px; margin-bottom: 0px;">
+              TAGS
+            </p>
+            <div id = "tag-buttons">
+              <button type="button" class="btn btn-dark btn-xs" id = "snippet-tag-btn">test2</button>
+            </div>
+          </div>
+          <div id = "snippet-date">
+            <div id = "snippet-created" style = "display: flex">
+              <p style = "display:inline; margin-right: 10px;">
+                Date Created
+              </p>
+              <div id = "database-date-created">
+                06/20/19
+              </div>
+            </div>
+            <div id = "snippet-modified" style = "display: flex">
+              <p style = "display:inline; margin-right: 10px;">
+                Date Modified
+              </p>
+              <div id = "database-date-modified">
+                08/02/19
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
       <div id = "one-doc">
         <div id = "snippet">
+          <div id = "icon-area">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" id = "edit-pen"></i>
+          </div>
+          <div id = "snippet-text">
+            Formas humanitatis per seacula quarta decima et quinta. Vulputate velit esse molestie consequat vel illum dolore eu feugiat nulla facilisis? At vero eros et accumsan et, iusto odio dignissim qui. Facit eorum claritatem, Investigationes demonstraverunt lectores legere me lius quod ii. Ut wisi enim ad minim veniam quis nostrud exerci tation ullamcorper. Claritatem insitam est usus legentis in iis qui legunt saepius.
+          </div>
         </div>
         <div id = "snippet-info">
-
+          <div id = "snippet-title">
+            Title 3
+          </div>
+          <div id = "snippet-tag">
+            <p style = "display: inline-block; margin-right: 10px; margin-bottom: 0px;">
+              TAGS
+            </p>
+            <div id = "tag-buttons">
+              <button type="button" class="btn btn-dark btn-xs" id = "snippet-tag-btn">test2</button>
+            </div>
+          </div>
+          <div id = "snippet-date">
+            <div id = "snippet-created" style = "display: flex">
+              <p style = "display:inline; margin-right: 10px;">
+                Date Created
+              </p>
+              <div id = "database-date-created">
+                06/20/19
+              </div>
+            </div>
+            <div id = "snippet-modified" style = "display: flex">
+              <p style = "display:inline; margin-right: 10px;">
+                Date Modified
+              </p>
+              <div id = "database-date-modified">
+                08/02/19
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
       <div id = "one-doc">
         <div id = "snippet">
+          <div id = "icon-area">
+            <i class="fa fa-pencil-square-o" aria-hidden="true" id = "edit-pen"></i>
+          </div>
+          <div id = "snippet-text">
+            Vulputate velit esse molestie consequat vel illum dolore eu feugiat nulla facilisis at vero eros. Et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis. Tempor cum soluta nobis, eleifend option congue nihil imperdiet doming id quod mazim placerat. Tincidunt ut laoreet dolore magna aliquam erat volutpat ut. Ad minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex? Parum claram anteposuerit litterarum formas humanitatis per seacula. Dolor sit amet consectetuer adipiscing elit sed diam nonummy nibh euismod wisi enim ea commodo. Qui facit eorum claritatem Investigationes demonstraverunt lectores, legere me lius quod ii legunt.
+          </div>
         </div>
         <div id = "snippet-info">
-
+          <div id = "snippet-title">
+            Title 4
+          </div>
+          <div id = "snippet-tag">
+            <p style = "display: inline-block; margin-right: 10px; margin-bottom: 0px;">
+              TAGS
+            </p>
+            <div id = "tag-buttons">
+              <button type="button" class="btn btn-dark btn-xs" id = "snippet-tag-btn">test2</button>
+            </div>
+          </div>
+          <div id = "snippet-date">
+            <div id = "snippet-created" style = "display: flex">
+              <p style = "display:inline; margin-right: 10px;">
+                Date Created
+              </p>
+              <div id = "database-date-created">
+                06/20/19
+              </div>
+            </div>
+            <div id = "snippet-modified" style = "display: flex">
+              <p style = "display:inline; margin-right: 10px;">
+                Date Modified
+              </p>
+              <div id = "database-date-modified">
+                08/02/19
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
 
+    </div>
+
+    <div class = "compare-row">
+      <button type="button" class = "btn" id="compare-btn">Select to Compare</button>
+    </div>
+
+    <div class = "compare-row2" style = "display:none;">
+      <button type="button" class = "btn" id="confirm-btn">Compare</button>
+      <button type="button" class = "btn" id="cancel-btn">Cancel</button>
     </div>
 
 </body>
@@ -236,8 +399,27 @@
 //   var storage=window.sessionStorage;
 //   console.log(storage);
 
-  $("#one-doc").hover(function(){
-    edit-pen
+  var compareBtn = false;
+
+  $( "#compare-btn" ).click(function(){
+    compareBtn = true;
+    $("#snippet-text").css('margin-top', "-0.5em");
+    $("#icon-area").html('<img src="https://img.icons8.com/windows/32/000000/plus.png" id = "select-btn">');
+    $(".compare-row").hide();
+    $(".compare-row2").show();
+  });
+
+
+  $( "#one-doc" ).mouseenter(function(){
+    if (compareBtn == false){
+        $("#edit-pen").css('visibility', 'visible');
+    }else{
+        $("#edit-pen").css('visibility', 'hidden');
+    }
+  });
+
+  $( "#one-doc" ).mouseleave(function(){
+    $("#edit-pen").css('visibility', 'hidden');
   });
 
 </script>
