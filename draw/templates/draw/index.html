@@ -21,7 +21,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: #d0e7d0; /* #DECFD3 */
+        background-color: #6e88c1;
       }
 
       .ql-toolbar{
@@ -181,12 +181,12 @@
               TAG:
             </p>
             <div id = "tags">
-              <button data-toggle="popover" data-html="true" data-placement="bottom"
+<!--               <button data-toggle="popover" data-html="true" data-placement="bottom"
                       data-content="5 files with this tag <div class='see-files'>see files</div> <br>
                                     <div type='button' class='btn btn-danger btn-sm' id='remove-tag'>&#10005; remove tag</div>"
                       type="button" class="btn btn-dark btn-sm" id = "tag-btn">test1</button>
               <button type="button" class="btn btn-dark btn-sm" id = "tag-btn">test2</button>
-              <button type="button" class="btn btn-dark btn-sm" id = "tag-btn">test3</button>
+              <button type="button" class="btn btn-dark btn-sm" id = "tag-btn">test3</button> -->
             </div>
 
             <div id = "wrap-add">
@@ -201,9 +201,6 @@
             <div id = "add-input" style="display:none">
               <input type="text" name="add-input-box" value = "" list="tag-list">
               <datalist id="tag-list">
-                <option value="test1">
-                <option value="test2">
-                <option value="test3">
               </datalist>
       <!--                 <i class="fa fa-plus-square-o icon"></i> -->
             </div>
@@ -321,12 +318,72 @@ window.onbeforeunload = function() {
     return null;
   }
 
-  if(getQueryString('version')!== null){
-    var storage=window.sessionStorage;
-    var versiondata = JSON.parse(storage.getQueryString('version'));
-    console.log(versiondata);
-//     quill.setContents()
+  // to get unselected tags
+  function difference(a, b) {
+    return a.concat(b).filter(v => !a.includes(v) || !b.includes(v))
   }
+
+
+  if(getQueryString('version')!== null){
+    // after new version clicked
+    var storage=window.sessionStorage;
+    var currentversion = getQueryString('version');
+    var versiondata = JSON.parse(storage[currentversion]);
+
+    quill.setContents(versiondata.text.ops);
+
+    var titleinput = document.getElementsByName("title-doc")[0];
+    titleinput.value = versiondata.title;
+
+    var tags = versiondata.tag;
+    tags.forEach(function(element) {
+      var tag = '<button type="button" class="btn btn-dark btn-sm" id = "tag-btn">'
+              + element
+              + '</button> ';
+      $('#tags').append(tag);
+    });
+
+    var alltags = JSON.parse(storage.alltags);
+    var tagoptionlists = difference(tags,alltags);
+    tagoptionlists.forEach(function(element) {
+      var tagoption = '<option value="'+element+'">'
+      $('#tag-list').append(tagoption);
+    });
+
+  }else{
+    // storage initial
+    var storage=window.sessionStorage;
+    storage.clear();
+    var alltags = ['happy', 'sad', 'draft','final'];
+    var version_1={
+      title:'Version1',
+      text:{"ops":[{"insert":"This is version 1!\n"}]},
+      tag:['draft','sad'],
+      lastmodified:'',
+      created:''
+    };
+    var version_2={
+      title:'Version2',
+      text:{"ops":[{"insert":"This is version 2!\n"}]},
+      tag:['happy'],
+      lastmodified:'',
+      created:''
+    };
+    var versionname_1 = Math.random();
+    var versionname_2 = Math.random();
+    var versionlist = [versionname_1,versionname_2];
+    storage['versionlist']=JSON.stringify(versionlist);
+    storage[versionname_1]=JSON.stringify(version_1);
+    storage[versionname_2]=JSON.stringify(version_2);
+    storage['alltags']=JSON.stringify(alltags);
+
+    var tags = [];
+    alltags.forEach(function(element) {
+      var tagoption = '<option value="'+element+'">'
+      $('#tag-list').append(tagoption);
+    });
+
+  };
 
   var inputTitle = document.getElementsByName("title-doc")[0];
 
@@ -348,8 +405,6 @@ window.onbeforeunload = function() {
 
   var inputTag = document.getElementsByName("add-input-box")[0];
   var inputTagValue;
-  var tags = [];// tags for current version
-  var alltags = [];// array store all the tags
 
   inputTag.addEventListener("keyup", function(event) {
       if (event.key === "Enter") {
@@ -382,30 +437,43 @@ window.onbeforeunload = function() {
     tags.push(newTag);
     if(alltags.indexOf(newTag) === -1){
       alltags.push(newTag);
-    };
+    }
   };
 
 
   $( "#new-version" ).click(function(e){
     // save everything as a new entry/file/page in database
     var currentversion = getQueryString('version')||Math.random();
+    if (getQueryString('version')===null){
+      var versionlist = JSON.parse(storage.versionlist);
+      versionlist.push(currentversion);
+      storage['versionlist']=JSON.stringify(versionlist);
+    };
     var newveersion = Math.random();
+    var title = document.getElementsByName("title-doc")[0].value;
+    var text = quill.getContents();
     var oneversion = new Object();
     oneversion.title=title;
     oneversion.tag=tags;
     oneversion.text=text;
-    var storage=window.sessionStorage;
-    storage[currentversion] = oneversion;
-    storage[newveersion] = oneversion;
-    storage['alltags'] = alltags;
+    storage[currentversion] = JSON.stringify(oneversion);
+    storage[newveersion] = JSON.stringify(oneversion);
+    versionlist.push(newveersion);
+    storage['versionlist']=JSON.stringify(versionlist);
+    storage['alltags'] = JSON.stringify(alltags);
     window.location.href='/draw/?version='+newveersion;
   });
 
   $( "#all-version" ).click(function(e){
     // remember to save info then switch to page
     var currentversion = getQueryString('version')||Math.random();
+    if (getQueryString('version')===null){
+      var versionlist = JSON.parse(storage.versionlist);
+      versionlist.push(currentversion);
+      storage['versionlist']=JSON.stringify(versionlist);
+    };
     var title = document.getElementsByName("title-doc")[0].value;
-    var text = JSON.stringify(quill.getContents());
+    var text = quill.getContents();
 
     var oneversion = new Object();
     oneversion.title=title;
@@ -415,11 +483,9 @@ window.onbeforeunload = function() {
 // data stored in sessionStorage gets cleared when the page session ends.
 // A page session lasts for as long as the browser is open and survives
 // over page reloads and restores.
-    var storage=window.sessionStorage;
-
-    storage[currentversion] = oneversion;
-    storage['alltags'] = alltags;
-//     window.location.href='/draw/allVersions';
+    storage[currentversion] = JSON.stringify(oneversion);
+    storage['alltags'] = JSON.stringify(alltags);
+    window.location.href='/draw/allVersions';
   });
 
 </script>
