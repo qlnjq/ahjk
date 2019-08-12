@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %} -->
 
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,7 @@
       }
 
       #editor{
-        height: 92vh;
+        height: 90vh;
         width: 80%;
         border-top-left-radius: 18px;
         border-top-right-radius: 18px;
@@ -280,9 +280,6 @@
     change = change.compose(delta);
   });
 
-
-
-
   quill.on('text-change', function(delta) {
     change = change.compose(delta);
   });
@@ -391,6 +388,17 @@ window.onbeforeunload = function() {
 
   $( "#new-version" ).click(function(e){
     // save everything as a new entry/file/page in database
+    var currentversion = getQueryString('version')||Math.random();
+    var newveersion = Math.random();
+    var oneversion = new Object();
+    oneversion.title=title;
+    oneversion.tag=tags;
+    oneversion.text=text;
+    var storage=window.sessionStorage;
+    storage[currentversion] = oneversion;
+    storage[newveersion] = oneversion;
+    storage['alltags'] = alltags;
+    window.location.href='/draw/?version='+newveersion;
   });
 
   $( "#all-version" ).click(function(e){

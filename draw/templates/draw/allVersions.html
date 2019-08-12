@@ -1,5 +1,5 @@
-  
-{% load static %}
+
+<!-- {% load static %} -->
 
 <!DOCTYPE html>
 <html>
@@ -11,43 +11,119 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  
+
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
     <style type="text/css">
+      html{
+        overflow-y: hidden;
+      }
+
       .main{
         display:flex;
         flex-direction:column;
         align-items:center;
+        background-color: #d0e7e7;
       }
       .header{
         width: 288px;
         margin-top: 44px;
-        font-family: Roboto;
+        font-family: 'Roboto', sans-serif;
         font-style: normal;
         font-weight: bold;
         font-size: 40px;
         line-height: 47px;
       }
-      
-      #header-row{
+
+       .tags-row, .snippet-list {
         flex-direction: row;
         display:flex;
         width:80vw;
-        margin-top:50px;
+        margin-top:20px;
         justify-content:space-between;
+
+        font-family: PT Sans;
+        font-size: 1em;
       }
-      
-       #tags-row {
-          font-family: PT Sans;
-          font-size: 1em;
-          flex-direction: row;
-          display:flex;
-      }
-      
+
       #tag-btn {
         border-radius: 100px;
         padding-right: 20px;
         padding-left: 20px;
+      }
+
+      #sort-list {
+        align-content: flex-end;
+      }
+
+      .snippet-list{
+        height:70vh;
+        background-color: #FFfFFF;
+        flex-wrap: wrap;
+        overflow: scroll;
+        border-radius: 18px;
+      }
+
+      #one-doc {
+        width: 43vh;
+        height: 38vh;
+        /* 35 : 15 */
+        /* background-color: black; */
+        margin: 1vh 1vh 5vh 1vh;
+        border-radius: 30px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      #snippet {
+        height: 24.5vh;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        /* background-color: pink; */
+      }
+
+      #snippet-info{
+        position: relative;
+        height: 10.5vh;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        /* background-color: blue; */
+        box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1);
+        padding: 0.9em 1.2em 0 1.2em;
+      }
+
+      #snippet-title {
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 28px;
+        font-size: 24px;
+      }
+
+      #snippet-tag {
+        display:flex;
+      }
+
+      #snippet-date {
+        display: flex;
+        font-size: 10px;
+        justify-content: space-between;
+      }
+
+      #edit-pen{
+        position: relative;
+        left: 38vh;
+        top: 2vh;
+      }
+
+      #snippet-tag {
+        align-items: center;
+      }
+      /*https://stackoverflow.com/questions/33911049/btn-xs-no-longer-a-valid-option-in-bootstrap-4*/
+      .btn-xs {
+        padding: .25rem .4rem;
+        font-size: .875rem;
+        line-height: .5;
+        border-radius: .2rem;
       }
     </style>
 
@@ -56,34 +132,107 @@
   <div class='header'>
     Introduction
   </div>
-  <div id = "header-row">
-    <div id = "tags-row">
-       <p style = "display: inline; padding-right: 10px;">
-        SIMILAR TAG:
-      </p>
+    <div class = "tags-row">
+
       <div id = "tags">
-        <button data-toggle="popover" data-html="true" data-placement="bottom" 
+        <p style = "display: inline; padding-right: 10px;">
+        SIMILAR TAG:
+        </p>
+        <button data-toggle="popover" data-html="true" data-placement="bottom"
                 data-content="5 files with this tag <div class='see-files'>see files</div> <br>
                               <div type='button' class='btn btn-danger btn-sm' id='remove-tag'>&#10005; remove tag</div>"
                 type="button" class="btn btn-dark btn-sm" id = "tag-btn">test1</button>
         <button type="button" class="btn btn-dark btn-sm" id = "tag-btn">test2</button>
         <button type="button" class="btn btn-dark btn-sm" id = "tag-btn">test3</button>
       </div>
+
+      <div id = "sort-list">
+        <p style = "display: inline; padding-right: 10px;">
+          SORT BY:
+        </p>
+
+        <div style = "display:inline">
+          <select name = "sort-list-box">
+            <option value = "Date Modified">Date Modified</option>
+            <option value = "Date Created">Date Created</option>
+            <option value = "Alpha"> Alphabetical Order</option>
+          </select>
+        </div>
+
+      </div>
     </div>
-    <div id = "tags-row">
-      <p style = "display: inline; padding-right: 10px;">
-        SORT BY:
-      </p>
+
+
+    <div class = "snippet-list">
+      <div id = "one-doc">
+        <div id = "snippet">
+          <i class="fa fa-pencil-square-o" aria-hidden="true" id = "edit-pen"></i>
+          <!-- preview of snippet -->
+        </div>
+        <div id = "snippet-info">
+          <div id = "snippet-title">
+            Title
+          </div>
+          <div id = "snippet-tag">
+            <p style = "display: inline-block; margin-right: 10px; margin-bottom: 0px;">
+              TAGS
+            </p>
+            <div id = "tag-buttons">
+              <button type="button" class="btn btn-dark btn-xs" id = "snippet-tag-btn">test2</button>
+            </div>
+          </div>
+          <div id = "snippet-date">
+            <div id = "snippet-created" style = "display: flex">
+              <p style = "display:inline; margin-right: 10px;">
+                Date Created
+              </p>
+              <div id = "database-date-created">
+                06/20/19
+              </div>
+            </div>
+            <div id = "snippet-modified" style = "display: flex">
+              <p style = "display:inline; margin-right: 10px;">
+                Date Modified
+              </p>
+              <div id = "database-date-modified">
+                08/02/19
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id = "one-doc">
+        <div id = "snippet">
+
+        </div>
+        <div id = "snippet-info">
+
+        </div>
+      </div>
+      <div id = "one-doc">
+        <div id = "snippet">
+        </div>
+        <div id = "snippet-info">
+
+        </div>
+      </div>
+      <div id = "one-doc">
+        <div id = "snippet">
+        </div>
+        <div id = "snippet-info">
+
+        </div>
+      </div>
+
+
     </div>
-   
-  </div>
-    
+
 </body>
-  
+
 <script>
-  
+
 //   var storage=window.sessionStorage;
 //   console.log(storage);
-  
+
 </script>
 </html>
