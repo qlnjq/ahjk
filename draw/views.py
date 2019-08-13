@@ -20,4 +20,4 @@ def allVersions(request):
    return render(request, "draw/allVersions.html")
 
 def compare(request):
-   return render(request, "draw/compare.html")
+   return render(request, "draw/compare_2.html")
