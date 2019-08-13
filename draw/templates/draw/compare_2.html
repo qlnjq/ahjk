@@ -4,6 +4,7 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script SRC="./js/diff_match_patch.html"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
 </head>
@@ -20,8 +21,69 @@
     }
 
     .snippet-body {
-      height: 26vh;
-      background-color: black;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 22vh;
+      width: 100%;
+      background-color: #FBFBFB;
+    }
+
+    .snippets {
+      display: flex;
+      height: 22vh;
+      width: 90%;
+      /* background-color: black; */
+      justify-content: flex-start;
+      align-content: flex-start;
+    }
+
+    .snippet {
+      margin: 0.5em;
+      width: 18vh;
+      height: 85%;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .s-title{
+      padding: 3px 5px 1.5px 8px;
+      font-family: PT sans;
+      font-size: 1.6em;
+    }
+
+    .btn-xs {
+      padding: .35rem .4rem .45rem .4rem;
+      margin-bottom: 0.34rem;
+      font-size: 14px;
+      line-height: .5;
+      border-radius: .6rem;
+      width: 3.45rem;
+    }
+
+    .s-tags{
+      display: flex;
+      height: 60%;
+      justify-content: space-between;
+      align-items: flex-start;
+      align-content: flex-start;
+      flex-wrap: wrap;
+      padding: 0px 5px 0px 5px;
+    }
+
+    .s-icon {
+      float:left;
+      position: relative;
+      width: 10px;
+      height: 10px;
+      left: 7vh;
+      top: -6vh;
+    }
+
+    .add-btn{
+      transform: scale(0.2);
     }
 
 }
@@ -31,11 +93,33 @@
 
 <body>
   <div class = "snippet-body">
-    <div class = "row">
-        <div class = "snippets">
-
+      <div class = "snippets">
+        <div class = "snippet">
+          <div class = "s-icon">
+            <img src="../../static/icons/ADD-btn.png" class="add-btn">
+          </div>
+          <div class = "s-title">
+            Title 1
+          </div>
+          <div class = "s-tags">
+            <button type="button" class="btn btn-secondary btn-xs">
+              hello
+            </button>
+            <button type="button" class="btn btn-secondary btn-xs">
+              tag
+            </button>
+            <button type="button" class="btn btn-secondary btn-xs">
+              tag
+            </button>
+          </div>
+        </div>
+        <div class = "snippet">
+          hello;
+        </div>
+        <div class = "snippet">
+          hello;
+        </div>
       </div>
-    </div>
   </div>
 
   <div class="editor-body">
