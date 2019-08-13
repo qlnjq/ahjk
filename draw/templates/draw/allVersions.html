@@ -82,6 +82,10 @@
         box-shadow: 0 0 3pt 2.2pt lightBlue;
       }
 
+      .one-doc.hover{
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+      }
+
       #snippet {
         height: 24.5vh;
         border-top-left-radius: 30px;
@@ -412,9 +416,7 @@
   var compareBtn = false;
 
   $( ".one-doc" ).mouseenter(function(){
-    // if (compareBtn == false){
       $($(this)[0].childNodes[1].childNodes[1].childNodes[0]).css('visibility','visible');
-    // }
   });
 
   $( ".one-doc" ).mouseleave(function(){
@@ -425,11 +427,11 @@
 
   $(".one-doc").click(function(){
     if (compareBtn == true){
+      $(this).removeClass('hover');
       if ($(this).hasClass('active')){
         $(this).removeClass('active');
         $($(this)[0].childNodes[1].childNodes[1]).html('<img src="../../static/icons/plus-btn.svg" class = "plus-btn">');
       } else {
-        // $($(this)[0].childNodes[1].childNodes[1]).html('<i class="fas fa-check-circle select-btn"></i>');
         $($(this)[0].childNodes[1].childNodes[1]).html('<img src="../../static/icons/check-circle-solid.svg" class = "select-btn">');
         $(this).addClass('active');
       }
@@ -442,7 +444,20 @@
     $(".icon-area").html('<img src="../../static/icons/plus-btn.svg" class = "plus-btn">');
     $(".compare-row").hide();
     $(".compare-row2").show();
+
+    compareHover();
   });
+
+  function compareHover (){
+    $(".one-doc").mouseenter(function(){
+      if ($(this).hasClass('active') != true){
+          $(this).addClass('hover');
+        }
+    });
+    $(".one-doc").mouseleave(function(){
+          $(this).removeClass('hover');
+    });
+  }
 
   $( "#cancel-btn" ).click(function(){
     compareBtn = false;
