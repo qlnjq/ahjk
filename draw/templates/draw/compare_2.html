@@ -9,84 +9,106 @@
 </head>
 <style type="text/css">
 
-  .flex-grid {
-    display: flex;
-  }
-  .col {
-    flex: 1;
-  }
-  .editor {
-   height: 92vh;
-  }
+    .flex-grid {
+      display: flex;
+    }
+    .col {
+      flex: 1;
+    }
+    .editor {
+      height: 92vh;
+    }
+
+    .snippet-body {
+      height: 26vh;
+      background-color: black;
+    }
 
 }
 
 
 </style>
-<!-- Create the editor container -->
 
 <body>
+  <div class = "snippet-body">
+    <div class = "row">
+        <div class = "snippets">
 
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary">
-    <input type="radio" name="options" id="option1" autocomplete="off" value ="compare"> Compare
-    </label>
-    <label class="btn btn-secondary active">
-      <input type="radio" name="options" id="option2" autocomplete="off" value="edit" checked> Edit
-    </label>
-  </div>
-
-  <div class="master" style="display:none">
-  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-    <label class="btn btn-secondary">
-    <input type="radio" name="master-child" id="option1" autocomplete="off" value ="mc1"> Title 1
-    </label>
-    <label class="btn btn-secondary active">
-      <input type="radio" name="master-child" id="option2" autocomplete="off" value="mc2"> Title 2
-    </label>
-
-    <label class="btn btn-secondary active">
-      <input type="radio" name="master-child" id="option2" autocomplete="off" value="mc3"> Title 3
-    </label>
-  </div>
-  </div>
-
-
-
-<div class="flex-grid">
-  <div class = "col">
-    <div id="quill-1" class = "editor">
-
-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus mauris a diam maecenas sed. Amet nisl suscipit adipiscing bibendum est ultricies integer. Amet cursus sit amet dictum. Tempus quam pellentesque nec nam. Iaculis at erat pellentesque adipiscing. Ornare arcu dui vivamus arcu felis bibendum ut tristique et. Tincidunt augue interdum velit euismod in pellentesque. Felis eget velit aliquet sagittis id. Velit dignissim sodales ut eu sem integer vitae justo. Elementum curabitur vitae nunc sed velit. Ultrices vitae auctor eu augue ut lectus arcu bibendum. Est sit amet facilisis magna etiam tempor orci. Volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend. Est velit egestas dui id. Porttitor leo a diam sollicitudin tempor id. Massa id neque aliquam vestibulum morbi blandit. Semper quis lectus nulla at volutpat. Proin nibh nisl condimentum id.
-      Egestas congue quisque egestas diam. Faucibus a pellentesque sit amet porttitor eget. Id nibh tortor id aliquet lectus proin nibh. Sed viverra ipsum nunc aliquet bibendum enim. Sapien faucibus et molestie ac feugiat. Sed tempus urna et pharetra pharetra massa massa. Tincidunt tortor aliquam nulla facilisi cras. Consectetur lorem donec massa sapien faucibus et. Euismod nisi porta lorem mollis aliquam. Placerat orci nulla pellentesque dignissim enim sit amet. Rhoncus mattis rhoncus urna neque viverra justo nec.
-
-
-    </div>
-  </div>
-  <div class = "col">
-    <div id="quill-2" class= "editor">
-      Egestas congue quisque egestas diam. Faucibus a pellentesque sit amet porttitor eget. Id nibh tortor id aliquet lectus proin nibh. Sed viverra ipsum nunc aliquet bibendum enim. Sapien faucibus et molestie ac feugiat. Sed tempus urna et pharetra pharetra massa massa. Tincidunt tortor aliquam nulla facilisi cras. Consectetur lorem donec massa sapien faucibus et. Euismod nisi porta lorem mollis aliquam. Placerat orci nulla pellentesque dignissim enim sit amet. Rhoncus mattis rhoncus urna neque viverra justo nec.
-
-      Posuere lorem ipsum dolor sit amet consectetur. Nullam eget felis eget nunc lobortis mattis. Massa sapien faucibus et molestie. Risus in hendrerit gravida rutrum quisque non. Eget felis eget nunc lobortis mattis aliquam faucibus. Odio morbi quis commodo odio aenean sed. Aliquam ut porttitor leo a diam. Sed adipiscing diam donec adipiscing tristique risus nec. Interdum velit euismod in pellentesque massa placerat duis ultricies lacus. Cursus risus at ultrices mi tempus imperdiet nulla malesuada pellentesque. Eros donec ac odio tempor orci dapibus ultrices in iaculis. Justo donec enim diam vulputate ut. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras.
-
+      </div>
     </div>
   </div>
 
-  <div class = "col">
-    <div id="quill-3" class= "editor">
-        asdfasdfasdfasdfasdfasdfasdfasdf
-        asdfasdfasdfasdfasdfawskjnrbjanwkrn
-        awflawkenfawnefjawkejnfkawjnefkjnawef
-        akwjefnakwjenfkajwnefkjanwekfjnawkejfnakwe
+  <div class="editor-body">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary">
+        <input type="radio" name="options" id="option1" autocomplete="off" value="compare"> Compare
+      </label>
+      <label class="btn btn-secondary active">
+        <input type="radio" name="options" id="option2" autocomplete="off" value="edit" checked> Edit
+      </label>
     </div>
-  </div>
 
-  <div class = "col">
-    <div id="quill-3" class = "editor"></div>
-  </div>
+    <div class="master" style="display:none">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary">
+          <input type="radio" name="master-child" id="option1" autocomplete="off" value="mc1"> Title 1
+        </label>
+        <label class="btn btn-secondary active">
+          <input type="radio" name="master-child" id="option2" autocomplete="off" value="mc2"> Title 2
+        </label>
 
-</div>
+        <label class="btn btn-secondary active">
+          <input type="radio" name="master-child" id="option2" autocomplete="off" value="mc3"> Title 3
+        </label>
+      </div>
+    </div>
+
+
+
+    <div class="flex-grid">
+      <div class="col">
+        <div id="quill-1" class="editor">
+
+
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus mauris a diam maecenas sed. Amet nisl suscipit adipiscing bibendum est ultricies integer. Amet cursus sit amet
+          dictum. Tempus quam pellentesque nec nam. Iaculis at erat pellentesque adipiscing. Ornare arcu dui vivamus arcu felis bibendum ut tristique et. Tincidunt augue interdum velit euismod in pellentesque. Felis eget velit aliquet sagittis id.
+          Velit dignissim sodales ut eu sem integer vitae justo. Elementum curabitur vitae nunc sed velit. Ultrices vitae auctor eu augue ut lectus arcu bibendum. Est sit amet facilisis magna etiam tempor orci. Volutpat commodo sed egestas egestas
+          fringilla phasellus faucibus scelerisque eleifend. Est velit egestas dui id. Porttitor leo a diam sollicitudin tempor id. Massa id neque aliquam vestibulum morbi blandit. Semper quis lectus nulla at volutpat. Proin nibh nisl condimentum id.
+          Egestas congue quisque egestas diam. Faucibus a pellentesque sit amet porttitor eget. Id nibh tortor id aliquet lectus proin nibh. Sed viverra ipsum nunc aliquet bibendum enim. Sapien faucibus et molestie ac feugiat. Sed tempus urna et
+          pharetra pharetra massa massa. Tincidunt tortor aliquam nulla facilisi cras. Consectetur lorem donec massa sapien faucibus et. Euismod nisi porta lorem mollis aliquam. Placerat orci nulla pellentesque dignissim enim sit amet. Rhoncus mattis
+          rhoncus urna neque viverra justo nec.
+
+
+        </div>
+      </div>
+      <div class="col">
+        <div id="quill-2" class="editor">
+          Egestas congue quisque egestas diam. Faucibus a pellentesque sit amet porttitor eget. Id nibh tortor id aliquet lectus proin nibh. Sed viverra ipsum nunc aliquet bibendum enim. Sapien faucibus et molestie ac feugiat. Sed tempus urna et
+          pharetra pharetra massa massa. Tincidunt tortor aliquam nulla facilisi cras. Consectetur lorem donec massa sapien faucibus et. Euismod nisi porta lorem mollis aliquam. Placerat orci nulla pellentesque dignissim enim sit amet. Rhoncus mattis
+          rhoncus urna neque viverra justo nec.
+
+          Posuere lorem ipsum dolor sit amet consectetur. Nullam eget felis eget nunc lobortis mattis. Massa sapien faucibus et molestie. Risus in hendrerit gravida rutrum quisque non. Eget felis eget nunc lobortis mattis aliquam faucibus. Odio morbi
+          quis commodo odio aenean sed. Aliquam ut porttitor leo a diam. Sed adipiscing diam donec adipiscing tristique risus nec. Interdum velit euismod in pellentesque massa placerat duis ultricies lacus. Cursus risus at ultrices mi tempus imperdiet
+          nulla malesuada pellentesque. Eros donec ac odio tempor orci dapibus ultrices in iaculis. Justo donec enim diam vulputate ut. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras.
+
+        </div>
+      </div>
+
+      <div class="col">
+        <div id="quill-3" class="editor">
+          asdfasdfasdfasdfasdfasdfasdfasdf
+          asdfasdfasdfasdfasdfawskjnrbjanwkrn
+          awflawkenfawnefjawkejnfkawjnefkjnawef
+          akwjefnakwjenfkajwnefkjanwekfjnawkejfnakwe
+        </div>
+      </div>
+
+      <div class="col">
+        <div id="quill-3" class="editor"></div>
+      </div>
+    </div>
+
+  </div>
 
 </body>
 
@@ -99,24 +121,24 @@
 
 
 
-  /*------------------------Quil Start------------------------------*/
-  var quill = new Quill('#quill-1', {
-    theme: 'snow'
-  });
+/*------------------------Quil Start------------------------------*/
+var quill = new Quill('#quill-1', {
+  theme: 'snow'
+});
 
-  var quill2 = new Quill('#quill-2', {
-    theme: 'snow'
-  });
+var quill2 = new Quill('#quill-2', {
+  theme: 'snow'
+});
 
-  var quill3 = new Quill('#quill-3', {
-    theme: 'snow'
-  });
+var quill3 = new Quill('#quill-3', {
+  theme: 'snow'
+});
 
 
-  //dictMe should retrieved from the database
-  dicMe = {1:quill.getText(),
-           2:quill2.getText(),
-           3:quill3.getText()}
+//dictMe should retrieved from the database
+dicMe = {1:quill.getText(),
+  2:quill2.getText(),
+  3:quill3.getText()}
 
 
   indexArray = [quill,quill2,quill3]
@@ -125,46 +147,46 @@
 
 
   $('input[name=options]').change(function(){
-      var value = $( 'input[name=options]:checked' ).val();
-      var options = {}
-      if (value=='compare'){
-        quill.enable(false)
-        quill2.enable(false)
-        quill3.enable(false)
-        $(".master").show();
-        dicMe[1] = quill.getText();
-        dicMe[2] = quill2.getText()
-        dicMe[3] = quill3.getText()
-        launch(1)
+    var value = $( 'input[name=options]:checked' ).val();
+    var options = {}
+    if (value=='compare'){
+      quill.enable(false)
+      quill2.enable(false)
+      quill3.enable(false)
+      $(".master").show();
+      dicMe[1] = quill.getText();
+      dicMe[2] = quill2.getText()
+      dicMe[3] = quill3.getText()
+      launch(1)
 
 
-      }else{
+    }else{
 
-        quill.enable(true)
-        quill2.enable(true)
-        quill3.enable(true)
-        quill.setText(dicMe[1])
-        quill2.setText(dicMe[2])
-        quill3.setText(dicMe[3])
+      quill.enable(true)
+      quill2.enable(true)
+      quill3.enable(true)
+      quill.setText(dicMe[1])
+      quill2.setText(dicMe[2])
+      quill3.setText(dicMe[3])
 
-        $(".master").hide();
+      $(".master").hide();
 
-      }
+    }
   });
 
   $('input[name=master-child]').change(function(){
-      var value = $( 'input[name=master-child]:checked' ).val();
+    var value = $( 'input[name=master-child]:checked' ).val();
 
-      if (value=='mc1'){
-        launch(1);
-      }else if (value=='mc2'){
-        launch(2);
-      } else if(value =='mc3'){
-        launch(3);
-      }
+    if (value=='mc1'){
+      launch(1);
+    }else if (value=='mc2'){
+      launch(2);
+    } else if(value =='mc3'){
+      launch(3);
+    }
 
 
-});
+  });
 
 
 
@@ -186,20 +208,20 @@
       results += data
       switch (op) {
         case 1:
-          currentQuill.insertText(idx, data, {
-            'background': '#adff2f'
-          });
-          break;
+        currentQuill.insertText(idx, data, {
+          'background': '#adff2f'
+        });
+        break;
         case -1:
-          currentQuill.insertText(idx, data, {
-            'background': '#f08080'
-          });
-          break;
+        currentQuill.insertText(idx, data, {
+          'background': '#f08080'
+        });
+        break;
         case 0:
-          currentQuill.insertText(idx, data, {
-            'color': '#000000'
-          });
-          break;
+        currentQuill.insertText(idx, data, {
+          'color': '#000000'
+        });
+        break;
       }
       idx += data.length
     }
@@ -211,9 +233,9 @@
 
 
 
-var dmp = new diff_match_patch();
-dmp.Diff_Timeout = 1
-dmp.Diff_EditCost = 4
+  var dmp = new diff_match_patch();
+  dmp.Diff_Timeout = 1
+  dmp.Diff_EditCost = 4
 
   function launch(master) {
 
