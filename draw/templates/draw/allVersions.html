@@ -76,7 +76,7 @@
       .one-doc.hover{
         box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
       }
-      
+
       #snippet {
         height: 24.5vh;
         border-top-left-radius: 30px;
@@ -307,6 +307,7 @@
         comparelist.push(snippetclicked);
         // $($(this)[0].childNodes[1].childNodes[1]).html('<i class="fas fa-check-circle select-btn"></i>');
         $($(this)[0].childNodes[0].childNodes[0]).html('<img src="../../static/icons/check-circle-solid.svg" class = "select-btn">');
+
         $(this).addClass('active');
       }
     }else{
@@ -331,7 +332,7 @@
           $(this).removeClass('hover');
     });
   }
-  
+
   $( "#cancel-btn" ).click(function(){
     compareBtn = false;
     $(".one-doc").removeClass('active');
