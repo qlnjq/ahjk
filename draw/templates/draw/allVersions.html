@@ -213,11 +213,6 @@
 
 
     <div class = "snippet-list">
-<<<<<<< HEAD
-=======
-
-
->>>>>>> f7aa43203389cfa779bbe47e58b224691bfc247d
     </div>
 
     <div class = "compare-row">
@@ -308,35 +303,6 @@
 
 
     var storage = window.sessionStorage;
-<<<<<<< HEAD
-    ///!!!
-    storage.clear();
-    var alltags = ['happy', 'sad', 'draft','final'];
-    var version_1={
-      title:'Version1',
-      text:{"ops":[{"insert":"This is version 1!\n"}]},
-      unformattext:'This is version 1!\n',
-      tag:['draft','sad'],
-      modified:'8/10/2019',
-      created:'8/9/2019'
-    };
-    var version_2={
-      title:'Version2',
-      text:{"ops":[{"insert":"This is version 2!\n"}]},
-      unformattext:'This is version 2!\n',
-      tag:['happy'],
-      modified:'8/11/2019',
-      created:'8/9/2019'
-    };
-    var versionname_1 = Math.random();
-    var versionname_2 = Math.random();
-    var versionlist = [versionname_1,versionname_2];
-    storage['versionlist']=JSON.stringify(versionlist);
-    storage[versionname_1]=JSON.stringify(version_1);
-    storage[versionname_2]=JSON.stringify(version_2);
-    storage['alltags']=JSON.stringify(alltags);
-    ///!!!
-=======
     // storage.clear();
     // var alltags = ['happy', 'sad', 'draft','final'];
     // var version_1={
@@ -362,7 +328,6 @@
     // storage[versionname_1]=JSON.stringify(version_1);
     // storage[versionname_2]=JSON.stringify(version_2);
     // storage['alltags']=JSON.stringify(alltags);
->>>>>>> f7aa43203389cfa779bbe47e58b224691bfc247d
 
     var similartags = JSON.parse(storage.alltags);
     similartags.forEach(function(element) {
