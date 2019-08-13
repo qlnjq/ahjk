@@ -324,7 +324,6 @@ window.onbeforeunload = function() {
     var storage=window.sessionStorage;
     var currentversion = getQueryString('version');
     var versiondata = JSON.parse(storage[currentversion]);
-
     quill.setContents(versiondata.text.ops);
 
     var titleinput = document.getElementsByName("title-doc")[0];
@@ -353,16 +352,18 @@ window.onbeforeunload = function() {
     var version_1={
       title:'Version1',
       text:{"ops":[{"insert":"This is version 1!\n"}]},
+      unformattext:'This is version 1!\n',
       tag:['draft','sad'],
-      lastmodified:'',
-      created:''
+      modified:'8/10/2019',
+      created:'8/9/2019'
     };
     var version_2={
       title:'Version2',
       text:{"ops":[{"insert":"This is version 2!\n"}]},
+      unformattext:'This is version 2!\n',
       tag:['happy'],
-      lastmodified:'',
-      created:''
+      modified:'8/11/2019',
+      created:'8/9/2019'
     };
     var versionname_1 = Math.random();
     var versionname_2 = Math.random();
@@ -379,6 +380,15 @@ window.onbeforeunload = function() {
     });
 
   };
+  
+  function getDate(){
+    var today = new Date();
+    var strDate = 'm/d/Y'
+      .replace('Y', today.getFullYear())
+      .replace('m', today.getMonth()+1)
+      .replace('d', today.getDate());
+    return strDate;
+  }
 
   var inputTitle = document.getElementsByName("title-doc")[0];
 
@@ -444,8 +454,7 @@ window.onbeforeunload = function() {
     var index = tags.indexOf(remTag);
     if (index > -1) {
       tags.splice(index, 1);
-    }
-
+    };
   };
 
   $(document).on('mouseenter', '.tag-btn', function(){
@@ -478,15 +487,24 @@ window.onbeforeunload = function() {
       var versionlist = JSON.parse(storage.versionlist);
       versionlist.push(currentversion);
       storage['versionlist']=JSON.stringify(versionlist);
+      var created = getDate();
+    }else{
+      var created = versiondata.created;
     };
     var newveersion = Math.random();
     var title = document.getElementsByName("title-doc")[0].value;
     var text = quill.getContents();
+    var unformattext = quill.getText();
+    var modified =getDate(); 
     var oneversion = new Object();
     oneversion.title=title;
     oneversion.tag=tags;
     oneversion.text=text;
+    oneversion.unformattext = unformattext;
+    oneversion.created=created;
+    oneversion.modified=modified;
     storage[currentversion] = JSON.stringify(oneversion);
+    oneversion.created=getDate();
     storage[newveersion] = JSON.stringify(oneversion);
     versionlist.push(newveersion);
     storage['versionlist']=JSON.stringify(versionlist);
@@ -498,18 +516,24 @@ window.onbeforeunload = function() {
     // remember to save info then switch to page
     var currentversion = getQueryString('version')||Math.random();
     if (getQueryString('version')===null){
+      var created = getDate(); 
       var versionlist = JSON.parse(storage.versionlist);
       versionlist.push(currentversion);
       storage['versionlist']=JSON.stringify(versionlist);
+    }else{
+      var created = versiondata.created;
     };
     var title = document.getElementsByName("title-doc")[0].value;
     var text = quill.getContents();
-
+    var unformattext = quill.getText();
+    var modified = getDate(); 
     var oneversion = new Object();
     oneversion.title=title;
     oneversion.tag=tags;
     oneversion.text=text;
-
+    oneversion.unformattext = unformattext;
+    oneversion.created=created;
+    oneversion.modified=modified;
 // data stored in sessionStorage gets cleared when the page session ends.
 // A page session lasts for as long as the browser is open and survives
 // over page reloads and restores.
