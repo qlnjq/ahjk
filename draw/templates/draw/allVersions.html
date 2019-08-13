@@ -200,10 +200,10 @@
 
         <div style = "display:inline">
           <select name = "sort-list-box">
-            <option value = "Date Created">Date Created - Oldest to Newest</option>
-            <option value = "Date Created">Date Created - Newest to Oldest</option>
-            <option value = "Date Modified">Date Modified - Oldest to Newest</option>
-            <option value = "Date Created">Date Modified - Newest to Oldest</option>
+            <option value = "Date Created Old">Date Created - Oldest to Newest</option>
+            <option value = "Date Created New">Date Created - Newest to Oldest</option>
+            <option value = "Date Modified Old">Date Modified - Oldest to Newest</option>
+            <option value = "Date Created New">Date Modified - Newest to Oldest</option>
             <option value = "Alpha"> Alphabetical Order</option>
           </select>
         </div>
@@ -213,6 +213,11 @@
 
 
     <div class = "snippet-list">
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> f7aa43203389cfa779bbe47e58b224691bfc247d
     </div>
 
     <div class = "compare-row">
@@ -227,7 +232,83 @@
 </body>
 
 <script>
+  $( "select" ).change(function() {
+    var sortingMethod = this.value
+    if (sortingMethod == "Date Created Old"){
+      sortDateCreatedOld()
+    }else if (sortingMethod == "Date Created New"){
+      sortDateCreatedNew()
+    }else if (sortingMethod == "Date Modified Old"){
+      console.log("asdf")
+      sortDateModifiedOld()
+    }else if (sortingMethod == "Date Modified New"){
+      sortDateModifiedNew()
+    }else if (sortingMethod == "Alpha"){
+      sortAlpha()
+    }
+  });
+
+
+  function sortDateCreatedOld(){
+    var docs = $('.one-doc')
+    docs.sort(function(a, b){
+      return new Date($(a).find("#database-date-created").text()) - new Date($(b).find("#database-date-created").text());
+    });
+    $(".snippet-list").html(docs);
+  }
+
+
+  function sortDateCreatedNew(){
+    var docs = $('.one-doc')
+
+    docs.sort(function(a, b){
+      return new Date($(b).find("#database-date-created").text()) - new Date($(a).find("#database-date-created").text());
+    });
+
+    $(".snippet-list").html(docs);
+  }
+
+
+  function sortDateModifiedOld(){
+    var docs = $('.one-doc')
+    docs.sort(function(a, b){
+      return new Date($(a).find("#database-date-modified").text()) - new Date($(b).find("#database-date-modified").text());
+    });
+    $(".snippet-list").html(docs);
+  }
+
+
+  function sortDateModifiedNew(){
+    var docs = $('.one-doc')
+
+    docs.sort(function(a, b){
+      return new Date($(b).find("#database-date-modified").text()) - new Date($(a).find("#database-date-modified").text());
+    });
+
+    $(".snippet-list").html(docs);
+  }
+
+  function sortAlpha(){
+    var docs = $('.one-doc')
+
+    docs.sort(function(a, b){
+      if ($(a).find("#snippet-title").text() <= $(b).find("#snippet-title").text()){
+        return 1
+      }else{
+        return -1
+      }
+    });
+
+    $(".snippet-list").html(docs);
+  }
+
+
+
+
+
+
     var storage = window.sessionStorage;
+<<<<<<< HEAD
     ///!!!
     storage.clear();
     var alltags = ['happy', 'sad', 'draft','final'];
@@ -255,6 +336,33 @@
     storage[versionname_2]=JSON.stringify(version_2);
     storage['alltags']=JSON.stringify(alltags);
     ///!!!
+=======
+    // storage.clear();
+    // var alltags = ['happy', 'sad', 'draft','final'];
+    // var version_1={
+    //   title:'Version1',
+    //   text:{"ops":[{"insert":"This is version 1!\n"}]},
+    //   unformattext:'This is version 1!\n',
+    //   tag:['draft','sad'],
+    //   modified:'8/10/2019',
+    //   created:'5/11/2019'
+    // };
+    // var version_2={
+    //   title:'aVersion2',
+    //   text:{"ops":[{"insert":"This is version 2!\n"}]},
+    //   unformattext:'This is version 2!\n',
+    //   tag:['happy'],
+    //   modified:'8/14/2019',
+    //   created:'3/11/2019'
+    // };
+    // var versionname_1 = Math.random();
+    // var versionname_2 = Math.random();
+    // var versionlist = [versionname_1,versionname_2];
+    // storage['versionlist']=JSON.stringify(versionlist);
+    // storage[versionname_1]=JSON.stringify(version_1);
+    // storage[versionname_2]=JSON.stringify(version_2);
+    // storage['alltags']=JSON.stringify(alltags);
+>>>>>>> f7aa43203389cfa779bbe47e58b224691bfc247d
 
     var similartags = JSON.parse(storage.alltags);
     similartags.forEach(function(element) {
@@ -294,6 +402,7 @@
 
   var compareBtn = false;
   $( ".one-doc" ).mouseenter(function(){
+      console.log($(this)[0])
       $($(this)[0].childNodes[0].childNodes[0].childNodes[0]).css('visibility','visible');
   });
   $( ".one-doc" ).mouseleave(function(){
