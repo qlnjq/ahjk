@@ -149,6 +149,10 @@
       top: 27.5vh;
     }
 
+    .hideToolbar {
+      display: none;
+    }
+
     .ql-container{
       width: 100%;
       display: block;
@@ -156,26 +160,30 @@
     }
 
 
-    .ql-container:nth-of-type(2):nth-last-child(2),
-    .ql-container:nth-of-type(2):nth-last-child(2) ~ .ql-container {
-      margin-left: 40px;
-      margin-right: 40px;
+    .ql-container:nth-of-type(2):nth-last-child(3){
+      margin-left: 5vh;
+      margin-right: 0px;
     }
 
-    .ql-container:nth-of-type(2):nth-last-child(3),
     .ql-container:nth-of-type(2):nth-last-child(3) ~ .ql-container {
-      margin-left: 30px;
-      margin-right: 30px;
+      margin-left: 4vh;
+      margin-right: 5vh;
     }
 
-    .ql-container:nth-of-type(2):nth-last-child(4),
-    .ql-container:nth-of-type(2):nth-last-child(4) ~ .ql-container {
-      margin-left: 20px;
-      margin-right: 20px;
+    .ql-container:nth-of-type(2):nth-last-child(5),
+    .ql-container:nth-of-type(2):nth-last-child(5) ~ .ql-container {
+      margin-left: 3vh;
+      margin-right: 3vh;
+    }
+
+    .ql-container:nth-of-type(2):nth-last-child(7),
+    .ql-container:nth-of-type(2):nth-last-child(7) ~ .ql-container {
+      margin-left: 1.4vh;
+      margin-right: 1.4vh;
     }
 
     .editor, .editor2, .editor3, .editor4{
-      top: 6.5vh;
+      top: 10vh;
       height: 91vh;
       border-top-left-radius: 18px;
       border-top-right-radius: 18px;
@@ -191,7 +199,7 @@
       border-top-right-radius: 25px;
       margin-right: 10px;
       padding-top: 30px;
-      padding-bottom: 70px;
+      padding-bottom: 100px;
     }
 
     .ql-snow, .ql-bubble {
@@ -237,8 +245,8 @@
   <div class="editor-body">
     <div class="editor"></div>
     <div class="editor2"></div>
-    <div class="editor3"></div>
-    <div class="editor4"></div>
+    <!-- <div class="editor3"></div> -->
+    <!-- <div class="editor4"></div> -->
   </div>
 </body>
 
@@ -294,6 +302,8 @@
           ['clean']                                         // remove formatting button
       ];
 
+      var noSelected = 0;
+
       var quill = new Quill('.editor', {
           modules: {
               toolbar: toolbarOptions,
@@ -307,9 +317,9 @@
         theme: 'snow'
       });
 
-      var quill = new Quill('.editor2', {
+      var quill2 = new Quill('.editor2', {
           modules: {
-              toolbar: false,
+              toolbar: toolbarOptions,
               history: {
                 delay: 200,
                 maxStack: 500,
@@ -317,38 +327,39 @@
               },
           },
         placeholder: 'Start writing here...',
-        theme: 'bubble'
+        theme: 'snow'
       });
 
-      var quill = new Quill('.editor3', {
-          modules: {
-              toolbar: false,
-              history: {
-                delay: 200,
-                maxStack: 500,
-                userOnly: true
-              },
-          },
-        placeholder: 'Start writing here...',
-        theme: 'bubble'
-      });
-
-      var quill = new Quill('.editor4', {
-          modules: {
-              toolbar: false,
-              history: {
-                delay: 200,
-                maxStack: 500,
-                userOnly: true
-              },
-          },
-        placeholder: 'Start writing here...',
-        theme: 'bubble'
-      });
-
-      // $(".ql-container").hover(function(){
-      //
+      $($(".ql-toolbar")[1]).addClass('hideToolbar');
+      // var quill3 = new Quill('.editor3', {
+      //     modules: {
+      //         toolbar: toolbarOptions,
+      //         history: {
+      //           delay: 200,
+      //           maxStack: 500,
+      //           userOnly: true
+      //         },
+      //     },
+      //   placeholder: 'Start writing here...',
+      //   theme: 'snow'
       // });
+      //
+      // var quill4 = new Quill('.editor4', {
+      //     modules: {
+      //         toolbar: toolbarOptions,
+      //         history: {
+      //           delay: 200,
+      //           maxStack: 500,
+      //           userOnly: true
+      //         },
+      //     },
+      //   placeholder: 'Start writing here...',
+      //   theme: 'snow'
+      // });
+
+      $(".ql-container").hover(function(){
+
+      });
 
 
 </script>
