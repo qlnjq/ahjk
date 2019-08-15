@@ -25,7 +25,7 @@ SECRET_KEY = '*6t50m_p^gif@4sz!590)u_!#9c-u8l9+7-v+*_op=v^#7wkv9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ahjk-harperkwok828073.codeanyapp.com']
+ALLOWED_HOSTS = ['ahjk-harperkwok828073.codeanyapp.com','ahjk-jach866608.codeanyapp.com', 'ahjk-kennwu17112103.codeanyapp.com']
 
 
 # Application definition
