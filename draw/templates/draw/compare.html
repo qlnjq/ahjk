@@ -135,12 +135,9 @@
     .editor-body{
       display: flex;
       justify-content: flex-start;
-      /* flex-wrap: no-wrap; */
-      /* flex-direction: row; */
+      flex-direction: row;
       background-color: #ebeff1;
-      /* height: 95vh; */
       overflow:hidden;
-      /* justify-content: space-around; */
     }
 
     /* actual toolbar */
@@ -190,18 +187,11 @@
       margin-top: 30px;
       font-size: 17px;
       box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.10);
-      /* z-index: 0; */
-      /* display: block; */
       justify-content: space-around !important;
     }
 
-
     .ql-editor, pre.ql-syntax {
-      /* background-color: #FFFFFF; */
-      /* border-top-left-radius: 25px;
-      border-top-right-radius: 25px; */
       /* display: flex;!!!no */
-      /* justify-content: flex-start; */
       padding-top: 2vh;
       padding-bottom: 5vh;
     }
@@ -213,13 +203,14 @@
     .compareThis-btn{
       display: flex;
       position: relative;
-      /* position: absolute; */
-      /* z-index: 1; */
-      width: 23%;
-      left: 77%;
+      width: 15.5em;
+      /* 23%; */
+      left: 0vh;
+      /* 53% == 2 */
+      /* 12.5vh; == 3*/
+      /* 0vh; == 3*/
       top: -72vh;
       align-items: center;
-      /* height:7vh; */
     }
 
     /* .edit-pen{
@@ -230,8 +221,9 @@
     } */
 
     .edit-pen{
-      margin: 0px 3vh;
+      margin-left: 3vh;
       font-size: 5vh;
+      cursor: pointer;
     }
 
     .btn-compare{
@@ -277,6 +269,7 @@
   </div>
 
   <div class="editor-body">
+
     <div class = "editor-container">
 
       <div class = "title-row">
@@ -296,9 +289,67 @@
         <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
       </div>
     </div>
-    <!-- <div class="editor2"></div> -->
-    <!-- <div class="editor3"></div> -->
-    <!-- <div class="editor4"></div> -->
+
+    <div class = "editor-container">
+
+      <div class = "title-row">
+        <div class = "editor-title">
+          Title
+        </div>
+        <div class = "editor-tag">
+          Tag
+        </div>
+      </div>
+
+      <div class="editor2"></div>
+      <div class = "compareThis-btn">
+        <button type="button" class="btn btn-secondary btn-compare">
+          See Differences with This
+        </button>
+        <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
+      </div>
+    </div>
+
+    <div class = "editor-container">
+
+      <div class = "title-row">
+        <div class = "editor-title">
+          Title
+        </div>
+        <div class = "editor-tag">
+          Tag
+        </div>
+      </div>
+
+      <div class="editor3"></div>
+      <div class = "compareThis-btn">
+        <button type="button" class="btn btn-secondary btn-compare">
+          See Differences with This
+        </button>
+        <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
+      </div>
+    </div>
+
+    <div class = "editor-container">
+
+      <div class = "title-row">
+        <div class = "editor-title">
+          Title
+        </div>
+        <div class = "editor-tag">
+          Tag
+        </div>
+      </div>
+
+      <div class="editor4"></div>
+      <div class = "compareThis-btn">
+        <button type="button" class="btn btn-secondary btn-compare">
+          See Differences with This
+        </button>
+        <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
+      </div>
+    </div>
+
   </div>
 </body>
 
@@ -383,31 +434,31 @@
       });
 
       $($(".ql-toolbar")[1]).addClass('hideToolbar');
-      // var quill3 = new Quill('.editor3', {
-      //     modules: {
-      //         toolbar: toolbarOptions,
-      //         history: {
-      //           delay: 200,
-      //           maxStack: 500,
-      //           userOnly: true
-      //         },
-      //     },
-      //   placeholder: 'Start writing here...',
-      //   theme: 'snow'
-      // });
-      //
-      // var quill4 = new Quill('.editor4', {
-      //     modules: {
-      //         toolbar: toolbarOptions,
-      //         history: {
-      //           delay: 200,
-      //           maxStack: 500,
-      //           userOnly: true
-      //         },
-      //     },
-      //   placeholder: 'Start writing here...',
-      //   theme: 'snow'
-      // });
+      var quill3 = new Quill('.editor3', {
+          modules: {
+              toolbar: toolbarOptions,
+              history: {
+                delay: 200,
+                maxStack: 500,
+                userOnly: true
+              },
+          },
+        placeholder: 'Start writing here...',
+        theme: 'snow'
+      });
+
+      var quill4 = new Quill('.editor4', {
+          modules: {
+              toolbar: toolbarOptions,
+              history: {
+                delay: 200,
+                maxStack: 500,
+                userOnly: true
+              },
+          },
+        placeholder: 'Start writing here...',
+        theme: 'snow'
+      });
 
       $(".ql-container").hover(function(){
 
