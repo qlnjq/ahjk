@@ -376,7 +376,7 @@
     }
   });
   $(".one-doc").click(function(){
-    var snippetclicked = $(this)[0].id;
+    var snippetclicked = Number($(this)[0].id);
     if (compareBtn == true){
       $(this).removeClass('hover');
       if ($(this).hasClass('active')){
@@ -387,7 +387,7 @@
         comparelist.splice(index, 1);
       } else {
         console.log('select')
-        comparelist.push(snippetclicked);
+        comparelist.push(Number(snippetclicked));
         // $($(this)[0].childNodes[1].childNodes[1]).html('<i class="fas fa-check-circle select-btn"></i>');
         $($(this)[0].childNodes[0].childNodes[0]).html('<img src="../../static/icons/check-circle-solid.svg" class = "select-btn">');
 
