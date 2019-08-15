@@ -189,7 +189,7 @@
 
       <div id = "tags">
         <p style = "display: inline; padding-right: 10px;">
-        SIMILAR TAGS:
+        All TAGS:
         </p>
       </div>
 
@@ -294,11 +294,9 @@
       }
     });
 
-    $(".snippet-list").html(docs);
+     $(".snippet-list").html(docs);
+    
   }
-
-
-
 
 
 
@@ -331,9 +329,9 @@
 
     var similartags = JSON.parse(storage.alltags);
     similartags.forEach(function(element) {
-      var tag = '<button type="button" class="btn btn-dark btn-sm" id = "tag-btn">'
+      var tag = '<button type="button" class="btn btn-dark btn-sm tag-btn" id = "tag-btn">'
                       + element
-                      + '</button> '
+                      + '</button>'
       $('#tags').append(tag);
     });
 
@@ -365,28 +363,26 @@
 
   var comparelist=[];
 
+  
   var compareBtn = false;
-  $( ".one-doc" ).mouseenter(function(){
-      console.log($(this)[0])
+  $(".snippet-list").on('mouseenter', '.one-doc', function(){
       $($(this)[0].childNodes[0].childNodes[0].childNodes[0]).css('visibility','visible');
   });
-  $( ".one-doc" ).mouseleave(function(){
+  $(".snippet-list").on('mouseleave', '.one-doc', function(){
     if ($(".edit-pen").is(":visible")) {
       $($(this)[0].childNodes[0].childNodes[0].childNodes[0]).css('visibility','hidden');
     }
   });
-  $(".one-doc").click(function(){
+  $(".snippet-list").on('click', '.one-doc', function(){
     var snippetclicked = Number($(this)[0].id);
     if (compareBtn == true){
       $(this).removeClass('hover');
       if ($(this).hasClass('active')){
         $(this).removeClass('active');
         $($(this)[0].childNodes[0].childNodes[0]).html('<img src="../../static/icons/plus-btn.svg" class = "plus-btn">');
-        console.log('cancel')
         var index = comparelist.indexOf(snippetclicked);
         comparelist.splice(index, 1);
       } else {
-        console.log('select')
         comparelist.push(Number(snippetclicked));
         // $($(this)[0].childNodes[1].childNodes[1]).html('<i class="fas fa-check-circle select-btn"></i>');
         $($(this)[0].childNodes[0].childNodes[0]).html('<img src="../../static/icons/check-circle-solid.svg" class = "select-btn">');
@@ -406,12 +402,12 @@
   });
 
   function compareHover (){
-    $(".one-doc").mouseenter(function(){
+    $(".snippet-list").on('mouseenter', '.one-doc', function(){
       if ($(this).hasClass('active') != true){
           $(this).addClass('hover');
         }
     });
-    $(".one-doc").mouseleave(function(){
+    $(".snippet-list").on('mouseleave', '.one-doc', function(){
           $(this).removeClass('hover');
     });
   }
@@ -428,6 +424,38 @@
   $( "#confirm-btn" ).click(function(){
     storage['comparelist']=JSON.stringify(comparelist);
     window.location.href='../compare';
+  });
+  
+  $('.tag-btn').click(function(){
+   var selectedtag = $(this)[0].childNodes[0].data;
+    $('.snippet-list').html('');
+    versionlist.forEach(function(element) {
+      var snippetversion = JSON.parse(storage[element]);
+      if (snippetversion.tag.indexOf(selectedtag) > -1){
+        var onesnippettag = '';
+        snippetversion.tag.forEach(function(element) {
+          onesnippettag += '<button type="button" class="btn btn-dark btn-xs" id = "snippet-tag-btn">'
+                          + element
+                          + '</button> '
+        });
+        var onesnippet =
+            '<div class = "one-doc" id='
+              +element+
+            '><div id = "snippet"><div class = "icon-area"><i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i></div><div class = "snippet-text"><pre>'
+              + snippetversion.unformattext+
+            '</pre></div></div><div id = "snippet-info"><div id = "snippet-title">'
+              + snippetversion.title+
+            '</div><div id = "snippet-tag"><p style = "display: inline-block; margin-right: 10px; margin-bottom: 0px;">TAGS</p><div id = "tag-buttons">'
+              + onesnippettag+
+            '</div></div><div id = "snippet-date"><div id = "snippet-created" style = "display: flex"><p style = "display:inline; margin-right: 10px;">Date Created</p><div id = "database-date-created">'
+              + snippetversion.created+
+            '</div></div><div id = "snippet-modified" style = "display: flex"><p style = "display:inline; margin-right: 10px;">Date Modified</p><div id = "database-date-modified">'
+              + snippetversion.modified+
+            '</div></div></div></div></div>';
+        $('.snippet-list').append(onesnippet);
+      }
+      
+  });
   });
 </script>
 </html>
