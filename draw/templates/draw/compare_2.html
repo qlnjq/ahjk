@@ -168,6 +168,7 @@
     .editor-title{
       font-family: PT sans;
       font-size: 1.5em;
+      margin-bottom:1vh;
     }
 
     .editor-tag{
@@ -190,7 +191,7 @@
 
     .ql-editor, pre.ql-syntax {
       /* display: flex;!!!no */
-      padding-top: 2vh;
+      padding-top: 10vh;
       padding-bottom: 5vh;
       word-wrap: break-word;
     }
@@ -203,7 +204,7 @@
       display: flex;
       position: relative;
       width: 15.5em;
-      left: 0vh;
+      left:0vw;
       top: -72vh;
       align-items: center;
     }
@@ -218,6 +219,7 @@
       width: 100%;/*28vh;*/
       font-size: 1.6vh;
       border-radius: 20px;
+     
     }
 
 }
@@ -267,9 +269,9 @@
 <script>
 
   var storage = window.sessionStorage;
-  var versionlist = JSON.parse(storage.versionlist);
-  var comparelist = JSON.parse(storage.comparelist);
-  versionlist.forEach(function(element) {
+  var versionlist = JSON.parse(storage.versionlist); // all versions
+  var comparelist = JSON.parse(storage.comparelist); // selected ones
+  versionlist.forEach(function(element) {  // header
     var snippet = JSON.parse(storage[element]);
     var onesnippettag = '';
     snippet.tag.forEach(function(element) {
@@ -310,7 +312,6 @@
 
   $(".snippet").click(function(){
     var snippetclicked = Number($(this)[0].id);
-    console.log($(this)[0].id)
     $(this).removeClass('hover');
     if ($(this).hasClass('active')){
       $(this).removeClass('active');
@@ -362,10 +363,10 @@
 //       var editor = '<div class="editor'+index+'" id="'+element+'"></div>'
       var editor ='<div class = "editor-container"><div class = "title-row"><div class = "editor-title">'
           +selectedsnippet.title+
-        '</div><div class = "editor-tag">'
+        '</div><div class = "editor-tag">' // add tags 
           +
         '</div></div><div class="editor'+index+'" id="'+element+'"></div><div class = "compareThis-btn"><button type="button" class="btn btn-secondary btn-compare"id="'
-          +element+
+          +index+
           '">See Differences with This</button><i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"id="'+element+'"></i></div></div>'
       $('.editor-body').append(editor);
       quilllist[index]= new Quill(editorid, {
@@ -395,7 +396,7 @@
 
 
 
-
+ // git start
   $('input[name=options]').change(function(){
     var value = $( 'input[name=options]:checked' ).val();
     var options = {}
