@@ -8,6 +8,10 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
   <link href="https://fonts.googleapis.com/css?family=Roboto:100&display=swap" rel="stylesheet">
 
 </head>
@@ -311,7 +315,7 @@
   });
 
   $(".snippet").click(function(){
-    var snippetclicked = Number($(this)[0].id);
+    var snippetclicked = Number($(this)[0].id); // snippet id
     $(this).removeClass('hover');
     if ($(this).hasClass('active')){
       $(this).removeClass('active');
@@ -365,9 +369,9 @@
           +selectedsnippet.title+
         '</div><div class = "editor-tag">' // add tags 
           +
-        '</div></div><div class="editor'+index+'" id="'+element+'"></div><div class = "compareThis-btn"><button type="button" class="btn btn-secondary btn-compare"id="'
+        '</div></div><div class="editor'+index+'" id="'+element+'"></div><div class = "compareThis-btn"><input class="btn-compare" checked type="checkbox" data-toggle="toggle" data-on="See Differences with This" data-off="Back to Edit" id="'
           +index+
-          '">See Differences with This</button><i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"id="'+element+'"></i></div></div>'
+          '"><i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"id="'+element+'"></i></div></div>'
       $('.editor-body').append(editor);
       quilllist[index]= new Quill(editorid, {
             modules: {
