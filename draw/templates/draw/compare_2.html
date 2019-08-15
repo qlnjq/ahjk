@@ -335,11 +335,15 @@
       ];
   
   var quilllist=[];
+  var dicMe = {};
+  var indexArray = [];
   initialeditor();
   
   
   function initialeditor(){
     $('.editor-body').html('');
+    quilllist = [];
+    dicMe={};
     comparelist.forEach(function(element, index) {
       var selectedsnippet = JSON.parse(storage[element]);
       var editorid = '.editor'+index;
@@ -364,16 +368,13 @@
         var noSelected = 0;
         $($(".ql-toolbar")[1]).addClass('hideToolbar');
 
-
-
   //dictMe should retrieved from the database
-    dicMe = {};
     quilllist.forEach(function(element, index) {
       dicMe[index+1] = element.getText();
     })
+    indexArray = quilllist;
   };
   
-  var indexArray = quilllist;
 
   
 
@@ -390,10 +391,10 @@
 
 
     }else{
-
       quilllist.forEach(function(element, index) {
-        element.enable(false);
-        element.setText(DicMe[index+1]);
+        
+        element.enable(true);
+        element.setText(dicMe[index+1]);
       })
 
       $(".master").hide();
