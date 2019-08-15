@@ -223,9 +223,95 @@
       width: 100%;/*28vh;*/
       font-size: 1.6vh;
       border-radius: 20px;
-     
+    }
+  
+      .compareSwitch {
+      position: relative;
+      width: 90px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
     }
 
+/*  https://codepen.io/manhle/pen/JKmYzx  */
+    .compareSwitch-checkbox {
+      display: none;
+    }
+
+    .compareSwitch-label {
+      display: block;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid #27A1CA;
+      border-radius: 0px;
+    }
+
+    .compareSwitch-inner {
+      display: block;
+      width: 200%;
+      margin-left: -100%;
+      -moz-transition: margin 0.3s ease-in 0s;
+      -webkit-transition: margin 0.3s ease-in 0s;
+      -o-transition: margin 0.3s ease-in 0s;
+      transition: margin 0.3s ease-in 0s;
+    }
+
+    .compareSwitch-inner:before,
+    .compareSwitch-inner:after {
+      display: block;
+      float: left;
+      width: 50%;
+      height: 30px;
+      padding: 0;
+      line-height: 26px;
+      font-size: 14px;
+      color: white;
+      font-family: Trebuchet, Arial, sans-serif;
+      font-weight: bold;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+
+    .compareSwitch-inner:before {
+      content: "See Differences with This";
+      padding-left: 10px;
+      background-color: #FFFFFF;
+      color: #27A1CA;
+    }
+
+    .compareSwitch-inner:after {
+      content: "Edit";
+      padding-right: 10px;
+      background-color: #FFFFFF;
+      color: #666666;
+      text-align: right;
+    }
+
+    .compareSwitch-switch {
+      display: block;
+      width: 25px;
+      margin: 0px;
+      background: #27A1CA;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 65px;
+      -moz-transition: all 0.3s ease-in 0s;
+      -webkit-transition: all 0.3s ease-in 0s;
+      -o-transition: all 0.3s ease-in 0s;
+      transition: all 0.3s ease-in 0s;
+    }
+
+    .compareSwitch-checkbox:checked + .compareSwitch-label .compareSwitch-inner {
+      margin-left: 0;
+    }
+
+    .compareSwitch-checkbox:checked + .compareSwitch-label .compareSwitch-switch {
+      right: 0px;
+    }
 }
 
 
@@ -369,9 +455,11 @@
           +selectedsnippet.title+
         '</div><div class = "editor-tag">' // add tags 
           +
-        '</div></div><div class="editor'+index+'" id="'+element+'"></div><div class = "compareThis-btn"><input class="btn-compare" checked type="checkbox" data-toggle="toggle" data-on="See Differences with This" data-off="Back to Edit" id="'
+        '</div></div><div class="editor'+index+'" id="'+element+'"></div><div class = "compareThis-btn"><div class = "switch"><input type="checkbox" name="compareSwitch" class="compareSwitch-checkbox btn-compare" id="'
           +index+
-          '"><i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"id="'+element+'"></i></div></div>'
+          '" checked><label class="compareSwitch-label" for="'
+          +index+
+          '"><span class="compareSwitch-inner"></span><span class="compareSwitch-switch"></span></label><i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"id="'+element+'"></i></div></div>'
       $('.editor-body').append(editor);
       quilllist[index]= new Quill(editorid, {
             modules: {
