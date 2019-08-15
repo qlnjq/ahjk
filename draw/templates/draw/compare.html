@@ -134,16 +134,19 @@
 
     .editor-body{
       display: flex;
-      flex-direction: row;
-      background-color: #6e88c1;
-      height: 95vh;
+      justify-content: flex-start;
+      /* flex-wrap: no-wrap; */
+      /* flex-direction: row; */
+      background-color: #ebeff1;
+      /* height: 95vh; */
       overflow:hidden;
-      justify-content: space-around;
+      /* justify-content: space-around; */
     }
 
     /* actual toolbar */
     .ql-toolbar{
       width: 100%;
+      left:0vh;
       text-align: center;
       position:absolute;
       top: 27.5vh;
@@ -153,57 +156,88 @@
       display: none;
     }
 
+    .editor-container{
+      width: 100%;
+      margin: auto 40px;
+    }
+
+    .title-row{
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      top: 10.5vh;
+      left: 1vh;
+      align-items: center;
+    }
+
+    .editor-title{
+      font-family: PT sans;
+      font-size: 1.5em;
+    }
+
+    .editor-tag{
+      font-family: PT sans;
+      font-size: 1.0em;
+      padding: 0px 2em;
+    }
+
     .ql-container{
       width: 100%;
-      display: block;
+      top: 6vh;
+      height: 80vh;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      margin-top: 30px;
+      font-size: 17px;
+      box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.10);
+      /* z-index: 0; */
+      /* display: block; */
       justify-content: space-around !important;
     }
 
 
-    .ql-container:nth-of-type(2):nth-last-child(3){
-      margin-left: 5vh;
-      margin-right: 0px;
-    }
-
-    .ql-container:nth-of-type(2):nth-last-child(3) ~ .ql-container {
-      margin-left: 4vh;
-      margin-right: 5vh;
-    }
-
-    .ql-container:nth-of-type(2):nth-last-child(5),
-    .ql-container:nth-of-type(2):nth-last-child(5) ~ .ql-container {
-      margin-left: 3vh;
-      margin-right: 3vh;
-    }
-
-    .ql-container:nth-of-type(2):nth-last-child(7),
-    .ql-container:nth-of-type(2):nth-last-child(7) ~ .ql-container {
-      margin-left: 1.4vh;
-      margin-right: 1.4vh;
-    }
-
-    .editor, .editor2, .editor3, .editor4{
-      top: 10vh;
-      height: 91vh;
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
-      margin-top: 30px;
-      font-size: 17px;
-      box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.10);
-    }
-
-
     .ql-editor, pre.ql-syntax {
-      background-color: #FFFFFF;
-      border-top-left-radius: 25px;
-      border-top-right-radius: 25px;
-      margin-right: 10px;
-      padding-top: 30px;
-      padding-bottom: 100px;
+      /* background-color: #FFFFFF; */
+      /* border-top-left-radius: 25px;
+      border-top-right-radius: 25px; */
+      /* display: flex;!!!no */
+      /* justify-content: flex-start; */
+      padding-top: 2vh;
+      padding-bottom: 5vh;
     }
 
     .ql-snow, .ql-bubble {
       background-color: #FFFFFF;
+    }
+
+    .compareThis-btn{
+      display: flex;
+      position: relative;
+      /* position: absolute; */
+      /* z-index: 1; */
+      width: 23%;
+      left: 77%;
+      top: -72vh;
+      align-items: center;
+      /* height:7vh; */
+    }
+
+    /* .edit-pen{
+      position: relative;
+      left: 96.5%;
+      top: -76vh;
+      font-size: 5vh;
+    } */
+
+    .edit-pen{
+      margin: 0px 3vh;
+      font-size: 5vh;
+    }
+
+    .btn-compare{
+      width: 100%;/*28vh;*/
+      font-size: 1.6vh;
+      border-radius: 20px;
     }
 }
 
@@ -243,8 +277,26 @@
   </div>
 
   <div class="editor-body">
-    <div class="editor"></div>
-    <div class="editor2"></div>
+    <div class = "editor-container">
+
+      <div class = "title-row">
+        <div class = "editor-title">
+          Title
+        </div>
+        <div class = "editor-tag">
+          Tag
+        </div>
+      </div>
+
+      <div class="editor"></div>
+      <div class = "compareThis-btn">
+        <button type="button" class="btn btn-secondary btn-compare">
+          See Differences with This
+        </button>
+        <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
+      </div>
+    </div>
+    <!-- <div class="editor2"></div> -->
     <!-- <div class="editor3"></div> -->
     <!-- <div class="editor4"></div> -->
   </div>
