@@ -205,16 +205,20 @@
     }
 
     .compareThis-btn{
-      display: flex;
+      display: block;
       position: relative;
-      width: 15.5em;
-      left:0vw;
+      height:2em;
+      width: 7.5em;
+/*       left: 30vw; */
+      left: 60%;
       top: -72vh;
       align-items: center;
     }
 
     .edit-pen{
-      margin-left: 3vh;
+      position: relative;
+      left: 11vw;
+      top: -6vh;
       font-size: 5vh;
       cursor: pointer;
     }
@@ -225,6 +229,7 @@
       border-radius: 20px;
     }
   
+  /*  https://codepen.io/manhle/pen/JKmYzx  */
       .compareSwitch {
       position: relative;
       width: 90px;
@@ -233,7 +238,6 @@
       -ms-user-select: none;
     }
 
-/*  https://codepen.io/manhle/pen/JKmYzx  */
     .compareSwitch-checkbox {
       display: none;
     }
@@ -243,7 +247,7 @@
       overflow: hidden;
       cursor: pointer;
       border: 2px solid #27A1CA;
-      border-radius: 0px;
+/*       border-radius: 0.5em; */
     }
 
     .compareSwitch-inner {
@@ -276,14 +280,14 @@
     }
 
     .compareSwitch-inner:before {
-      content: "See Differences with This";
+      content: "Compare >>>";
       padding-left: 10px;
       background-color: #FFFFFF;
       color: #27A1CA;
     }
 
     .compareSwitch-inner:after {
-      content: "Edit";
+      content: "<<< Edit";
       padding-right: 10px;
       background-color: #FFFFFF;
       color: #666666;
@@ -293,12 +297,13 @@
     .compareSwitch-switch {
       display: block;
       width: 25px;
-      margin: 0px;
+      margin-top: 0px;
       background: #27A1CA;
       position: absolute;
       top: 0;
       bottom: 0;
-      right: 65px;
+      right:7.5vw;
+      border-radius: 0.em;
       -moz-transition: all 0.3s ease-in 0s;
       -webkit-transition: all 0.3s ease-in 0s;
       -o-transition: all 0.3s ease-in 0s;
@@ -306,7 +311,7 @@
     }
 
     .compareSwitch-checkbox:checked + .compareSwitch-label .compareSwitch-inner {
-      margin-left: 0;
+      margin-left: -0.5vw;
     }
 
     .compareSwitch-checkbox:checked + .compareSwitch-label .compareSwitch-switch {
