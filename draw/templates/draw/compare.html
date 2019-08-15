@@ -295,8 +295,48 @@
         </button>
         <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
       </div>
+      
     </div>
-    <!-- <div class="editor2"></div> -->
+     <div class = "editor-container">
+
+      <div class = "title-row">
+        <div class = "editor-title">
+          Title
+        </div>
+        <div class = "editor-tag">
+          Tag
+        </div>
+      </div>
+
+      <div class="editor2"></div>
+      <div class = "compareThis-btn">
+        <button type="button" class="btn btn-secondary btn-compare">
+          See Differences with This
+        </button>
+        <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
+      </div>
+      
+    </div>
+     <div class = "editor-container">
+
+      <div class = "title-row">
+        <div class = "editor-title">
+          Title
+        </div>
+        <div class = "editor-tag">
+          Tag
+        </div>
+      </div>
+
+      <div class="editor3"></div>
+      <div class = "compareThis-btn">
+        <button type="button" class="btn btn-secondary btn-compare">
+          See Differences with This
+        </button>
+        <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
+      </div>
+      
+    </div>
     <!-- <div class="editor3"></div> -->
     <!-- <div class="editor4"></div> -->
   </div>
@@ -383,31 +423,31 @@
       });
 
       $($(".ql-toolbar")[1]).addClass('hideToolbar');
-      // var quill3 = new Quill('.editor3', {
-      //     modules: {
-      //         toolbar: toolbarOptions,
-      //         history: {
-      //           delay: 200,
-      //           maxStack: 500,
-      //           userOnly: true
-      //         },
-      //     },
-      //   placeholder: 'Start writing here...',
-      //   theme: 'snow'
-      // });
-      //
-      // var quill4 = new Quill('.editor4', {
-      //     modules: {
-      //         toolbar: toolbarOptions,
-      //         history: {
-      //           delay: 200,
-      //           maxStack: 500,
-      //           userOnly: true
-      //         },
-      //     },
-      //   placeholder: 'Start writing here...',
-      //   theme: 'snow'
-      // });
+      var quill3 = new Quill('.editor3', {
+          modules: {
+              toolbar: toolbarOptions,
+              history: {
+                delay: 200,
+                maxStack: 500,
+                userOnly: true
+              },
+          },
+        placeholder: 'Start writing here...',
+        theme: 'snow'
+      });
+     
+      var quill4 = new Quill('.editor4', {
+          modules: {
+              toolbar: toolbarOptions,
+              history: {
+                delay: 200,
+                maxStack: 500,
+                userOnly: true
+              },
+          },
+        placeholder: 'Start writing here...',
+        theme: 'snow'
+      });
 
       $(".ql-container").hover(function(){
 

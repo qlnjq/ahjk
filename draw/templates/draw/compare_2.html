@@ -192,6 +192,7 @@
       /* display: flex;!!!no */
       padding-top: 2vh;
       padding-bottom: 5vh;
+      display: flex;
     }
 
     .ql-snow, .ql-bubble {
@@ -229,7 +230,7 @@
       <div class = "snippets">
       </div>
   </div>
-    <!-- <div class = "compNEditbtn-row">
+<!--     <div class = "compNEditbtn-row">
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
       <label class="btn btn-secondary">
         <input type="radio" name="options" id="option1" autocomplete="off" value="compare"> Compare
@@ -255,66 +256,6 @@
   </div>
 
   <div class="editor-body">
-
-    <div class = "editor-container">
-
-      <div class = "title-row">
-        <div class = "editor-title">
-          Title
-        </div>
-        <div class = "editor-tag">
-          Tag
-        </div>
-      </div>
-
-      <div class="editor"></div>
-      <div class = "compareThis-btn">
-        <button type="button" class="btn btn-secondary btn-compare">
-          See Differences with This
-        </button>
-        <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
-      </div>
-    </div>
-
-    <div class = "editor-container">
-
-      <div class = "title-row">
-        <div class = "editor-title">
-          Title
-        </div>
-        <div class = "editor-tag">
-          Tag
-        </div>
-      </div>
-
-      <div class="editor2"></div>
-      <div class = "compareThis-btn">
-        <button type="button" class="btn btn-secondary btn-compare">
-          See Differences with This
-        </button>
-        <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
-      </div>
-    </div>
-
-    <div class = "editor-container">
-
-      <div class = "title-row">
-        <div class = "editor-title">
-          Title
-        </div>
-        <div class = "editor-tag">
-          Tag
-        </div>
-      </div>
-
-      <div class="editor3"></div>
-      <div class = "compareThis-btn">
-        <button type="button" class="btn btn-secondary btn-compare">
-          See Differences with This
-        </button>
-        <i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"></i>
-      </div>
-    </div>
 
   </div>
   </body>
@@ -410,7 +351,6 @@
   var indexArray = [];
   initialeditor();
 
-
   function initialeditor(){
     $('.editor-body').html('');
     quilllist = [];
@@ -419,7 +359,14 @@
       var selectedsnippet = JSON.parse(storage[element]);
       var editorid = '.editor'+index;
       editorid = editorid.toString();
-      var editor = '<div class="editor'+index+'" id="'+element+'"></div>'
+//       var editor = '<div class="editor'+index+'" id="'+element+'"></div>'
+      var editor ='<div class = "editor-container"><div class = "title-row"><div class = "editor-title">'
+          +selectedsnippet.title+
+        '</div><div class = "editor-tag">'
+          +
+        '</div></div><div class="editor'+index+'" id="'+element+'"></div><div class = "compareThis-btn"><button type="button" class="btn btn-secondary btn-compare"id="'
+          +element+
+          '">See Differences with This</button><i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"id="'+element+'"></i></div></div>'
       $('.editor-body').append(editor);
       quilllist[index]= new Quill(editorid, {
             modules: {
