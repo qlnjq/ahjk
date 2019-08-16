@@ -362,6 +362,10 @@
 
 <!-- Initialize Quill editor -->
 <script>
+  
+  function setCheckbox(){
+    $('input[type=checkbox').prop("checked", true);
+  }
 
   var storage = window.sessionStorage;
   var versionlist = JSON.parse(storage.versionlist); // all versions
@@ -479,8 +483,10 @@
           theme: 'snow'
         });
       quilllist[index].setContents(selectedsnippet.text.ops);
-    });
+      setCheckbox();
 
+    });
+        
         var noSelected = 0;
         $($(".ql-toolbar")[1]).addClass('hideToolbar');
 
@@ -489,10 +495,34 @@
       dicMe[index+1] = element.getText();
     })
     indexArray = quilllist;
+    
+
+    $('.switch').mouseenter(function(){
+      console.log("hello");
+//       console.log($($(this)[0].childNodes[0]).prop('checked', false));
+      console.log($(this)[0].childNodes[0]);
+    });
+    
+    
+    //switch buttons -- start: compare == yes
+    $('input[type=checkbox').click(function(){
+          if ( $(this)[0].checked ){ //== true, set all others to be false
+            console.log("true");
+            $('input[type=checkbox').prop('checked', false);
+            $('input[type=checkbox').attr("checked",false)
+            $(this).prop('checked', true);
+            $(this).attr("checked",true)
+          } else { // if compare == yes, then want to go to edit == no
+             console.log("false");
+            $('input[type=checkbox').prop('checked', true);
+            $('input[type=checkbox').attr("checked",true)
+            $(this).prop('checked', false);
+            $(this).attr("checked",false)
+          }
+        });
+      //switch buttons --end
   };
-
-
-
+  
  // git start
   $('input[name=options]').change(function(){
     var value = $( 'input[name=options]:checked' ).val();
@@ -598,6 +628,10 @@
     }
 
   }
+ 
+  
+  
+  
 </script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
