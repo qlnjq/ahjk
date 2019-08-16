@@ -54,10 +54,14 @@
       cursor: pointer;
     }
 
-    .snippet.active {
+    .snippet.active, .ql-container.active {
       box-shadow: 0 0 3pt 2.2pt rgba(173, 216, 230, 0.7);
-      /* border: solid red; */
-    }
+/*       border: solid red; */
+    } 
+  
+    .ql-container.active {
+        box-shadow: 0 0 1pt 4pt rgba(173, 216, 230, 0.7);
+      } 
 
     .snippet.hover {
       box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
@@ -173,7 +177,7 @@
 
     .editor-title{
       font-family: PT sans;
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-bottom:1vh;
     }
 
@@ -207,10 +211,11 @@
     }
 
     .compareThis-btn{
-      display: flex;
+      display: block;
       position: relative;
-      width: 15.5em;
-      left:0vw;
+      height:2em;
+      width: 7.5em;
+      left: 60%;
       top: -72vh;
       align-items: center;
     }
@@ -218,7 +223,7 @@
     .edit-pen{
       position: relative;
       left: 11vw;
-      top: -5.5vh;
+      top: -6vh;
       font-size: 5vh;
       cursor: pointer;
     }
@@ -229,7 +234,8 @@
       border-radius: 20px;
     }
 
-      .compareSwitch {
+    /*  https://codepen.io/manhle/pen/JKmYzx  */
+    .compareSwitch {
       position: relative;
       width: 90px;
       -webkit-user-select: none;
@@ -237,7 +243,6 @@
       -ms-user-select: none;
     }
 
-/*  https://codepen.io/manhle/pen/JKmYzx  */
     .compareSwitch-checkbox {
       display: none;
     }
@@ -247,7 +252,7 @@
       overflow: hidden;
       cursor: pointer;
       border: 2px solid #27A1CA;
-      border-radius: 0px;
+      border-radius: 0.5em; */
     }
 
     .compareSwitch-inner {
@@ -280,14 +285,14 @@
     }
 
     .compareSwitch-inner:before {
-      content: "See Differences with This";
+      content: "Compare >>>";
       padding-left: 10px;
       background-color: #FFFFFF;
       color: #27A1CA;
     }
 
     .compareSwitch-inner:after {
-      content: "Edit";
+      content: "<<< Edit";
       padding-right: 10px;
       background-color: #FFFFFF;
       color: #666666;
@@ -302,7 +307,7 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      right: 65px;
+      right:7.5vw;
       -moz-transition: all 0.3s ease-in 0s;
       -webkit-transition: all 0.3s ease-in 0s;
       -o-transition: all 0.3s ease-in 0s;
@@ -310,7 +315,7 @@
     }
 
     .compareSwitch-checkbox:checked + .compareSwitch-label .compareSwitch-inner {
-      margin-left: 0;
+      margin-left: -0.5vw;
     }
 
     .compareSwitch-checkbox:checked + .compareSwitch-label .compareSwitch-switch {
@@ -326,26 +331,6 @@
       <div class = "snippets">
       </div>
   </div>
-<!--     <div class = "compNEditbtn-row">
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      <label class="btn btn-secondary">
-        <input type="radio" name="options" id="option1" autocomplete="off" value="compare"> Compare
-      </label>
-      <label class="btn btn-secondary active">
-        <input type="radio" name="options" id="option2" autocomplete="off" value="edit" checked> Edit
-      </label>
-    </div>
-  </div>
-  <div class="master" style="display:none">
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary">
-          <input type="radio" name="master-child" id="option1" autocomplete="off" value="mc1"> Title 1
-        </label>
-        <label class="btn btn-secondary active">
-          <input type="radio" name="master-child" id="option2" autocomplete="off" value="mc2"> Title 2
-        </label>
-      </div>
-    </div> -->
 
   <div class = "workspace-window">
     COMPARE WORKSPACE
@@ -361,6 +346,10 @@
 
 <!-- Initialize Quill editor -->
 <script>
+
+  function setCheckbox(){
+      $('input[type=checkbox').prop("checked", true);
+    }
 
   var storage = window.sessionStorage;
   var versionlist = JSON.parse(storage.versionlist); // all versions
@@ -387,7 +376,7 @@
       var comparesnippet =
         '<div class = "snippet" id='
         +element+
-        '><div class = "s-icon"><img src="../../static/icons/check-circle-solid.svg" class = "select-btn"></div><div class = "s-title">'
+        '><div class = "s-icon"><img src="../../static/icons/ADD-btn.png" class = "select-btn"></div><div class = "s-title">'
             +snippet.title+
           '</div><div class = "s-tags">'
            +onesnippettag+
@@ -472,6 +461,7 @@
           '"><label class="compareSwitch-label" for="'
           +index+
           '" checked><span class="compareSwitch-inner"></span><span class="compareSwitch-switch"></span></label><i class="fa fa-pencil-square-o edit-pen" aria-hidden="true"id="'+element+'"></i></div></div>'
+/// checked??
       $('.editor-body').append(editor);
       quilllist[index]= new Quill(editorid, {
             modules: {
@@ -486,6 +476,7 @@
           theme: 'snow'
         });
       quilllist[index].setContents(selectedsnippet.text.ops);
+      setCheckbox();
     });
      if (comparelist.length ===3){
         $('.compareThis-btn').css({'left':'12vw'});
@@ -501,7 +492,7 @@
       dicMe[index+1] = element.getText();
     })
     indexArray = quilllist;
-    
+
     $('.edit-pen').bind('click', function(){
       comparelist.forEach(function(element, index) {
         var thissnippet = JSON.parse(storage[element]);
@@ -511,23 +502,45 @@
       });
       window.location.href='../?version='+$(this)[0].id;
     });
-  };
-  
+
+    //switch buttons -- start: compare == yes
+        $('input[type=checkbox').click(function(){
+          var element = document.getElementsByClassName('ql-container');
+          var elID = parseInt($(this).attr('id'));
+              if ( $(this)[0].checked ){ //== true, set all others to be false
+                $('input[type=checkbox').prop('checked', false);
+                $('input[type=checkbox').attr("checked",false)
+                $(this).prop('checked', true);
+                $(this).attr("checked",true)
+                
+//                 if (element[elID].classList.contains("active")){
+//                   console.log("hello")
+//                   element[elID].classList.remove("active")
+//                   console.log(element[elID])
+//                 }
+                
+                if (element[elID].classList.contains("active")){
+                      for (var x = 0; x < quilllist.length; x++) {
+                        element[x].classList.remove("active");
+                        console.log("hello");
+                      }
+                      // element[elID].classList.remove("active")
+                }
+              } else { // if shows compare == yes, then want to go to edit == no
+                $('input[type=checkbox').prop('checked', true);
+                $('input[type=checkbox').attr("checked",true)
+                $(this).prop('checked', false);
+                $(this).attr("checked",false)
+                
+//                 console.log(element[parseInt($(this).attr('id'))]);
+                if (!(element[elID].classList.contains("active"))){
+                  element[elID].className += " active";
+                }
+              }
+            });
+          //switch buttons --end
 
  // git start
-  $('input[name=options]').change(function(){
-    var value = $( 'input[name=options]:checked' ).val();
-    var options = {}
-    if (value=='compare'){
-      quilllist.forEach(function(element, index) {
-        element.enable(false);
-        dicMe[index+1] = element.getText();
-      })
-      $(".master").show();
-      launch(1)
-
-
-
 
      $('input[type="checkbox"]').click(function(){
 
