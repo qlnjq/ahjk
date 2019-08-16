@@ -511,23 +511,10 @@
       });
       window.location.href='../?version='+$(this)[0].id;
     });
-  };
+
   
 
  // git start
-  $('input[name=options]').change(function(){
-    var value = $( 'input[name=options]:checked' ).val();
-    var options = {}
-    if (value=='compare'){
-      quilllist.forEach(function(element, index) {
-        element.enable(false);
-        dicMe[index+1] = element.getText();
-      })
-      $(".master").show();
-      launch(1)
-
-
-
 
      $('input[type="checkbox"]').click(function(){
 
