@@ -22,7 +22,8 @@
         display:flex;
         flex-direction:column;
         align-items:center;
-        background-color: #FBFBFB;;
+        background-color: #b7c5d7;
+/*           #FBFBFB; */
       }
       .header{
         width: 288px;
@@ -334,7 +335,17 @@
                       + '</button>'
       $('#tags').append(tag);
     });
-
+  
+    var showAllTag = '<button type="button" class="btn btn-dark btn-sm tag-btn alltag" id = "tag-btn" onClick = "window.location.reload(false)">'
+                      + "Show All Tags"
+                      + '</button>'
+    $('#tags').append(showAllTag);
+  
+//     var loadUrl = "http://ahjk-jach866608.codeanyapp.com/draw/allVersions/"
+//     $("#alltag").click(function(){
+//           $("#alltag").html(loadUrl).load(loadUrl);
+//       });
+  
   var versionlist = JSON.parse(storage.versionlist);
   versionlist.forEach(function(element) {
     var snippetversion = JSON.parse(storage[element]);
@@ -454,8 +465,9 @@
             '</div></div></div></div></div>';
         $('.snippet-list').append(onesnippet);
       }
-      
   });
+
+    
   });
 </script>
 </html>
