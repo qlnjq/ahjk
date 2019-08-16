@@ -140,6 +140,7 @@
       flex-direction: row;
       background-color: #ebeff1;
       overflow:hidden;
+      padding-right:40px;
     }
 
     /* actual toolbar */
@@ -157,7 +158,8 @@
 
     .editor-container{
       width: 100%;
-      margin: auto 40px;
+      margin: auto;
+      margin-left:40px;
     }
 
     .title-row{
@@ -218,7 +220,7 @@
     .edit-pen{
       position: relative;
       left: 11vw;
-      top: -6vh;
+      top: -5.5vh;
       font-size: 5vh;
       cursor: pointer;
     }
@@ -411,6 +413,12 @@
     if ($(this).hasClass('active')){
       $(this).removeClass('active');
       $($(this)[0].childNodes[0]).html('<img src="../../static/icons/ADD-btn.png" class = "add-btn">');
+      comparelist.forEach(function(element, index) {
+        var thissnippet = JSON.parse(storage[element]);
+        thissnippet.text = quilllist[index].getContents();
+        thissnippet.unformattext = quilllist[index].getText();
+        storage[element] = JSON.stringify(thissnippet);
+      });
       var index = comparelist.indexOf(snippetclicked);
       comparelist.splice(index, 1);
       initialeditor();
@@ -480,7 +488,12 @@
         });
       quilllist[index].setContents(selectedsnippet.text.ops);
     });
-
+     if (comparelist.length ===3){
+        $('.compareThis-btn').css({'left':'12vw'});
+      }
+      if(comparelist.length ===4){
+        $('.compareThis-btn').css({'left':'6vw'});
+      };
         var noSelected = 0;
         $($(".ql-toolbar")[1]).addClass('hideToolbar');
 
@@ -489,9 +502,18 @@
       dicMe[index+1] = element.getText();
     })
     indexArray = quilllist;
+    
+    $('.edit-pen').bind('click', function(){
+      comparelist.forEach(function(element, index) {
+        var thissnippet = JSON.parse(storage[element]);
+        thissnippet.text = quilllist[index].getContents();
+        thissnippet.unformattext = quilllist[index].getText();
+        storage[element] = JSON.stringify(thissnippet);
+      });
+      window.location.href='../?version='+$(this)[0].id;
+    });
   };
-
-
+  
 
  // git start
   $('input[name=options]').change(function(){
