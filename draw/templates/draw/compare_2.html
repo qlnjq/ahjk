@@ -16,14 +16,12 @@
 
 </head>
 <style type="text/css">
-
     .flex-grid {
       display: flex;
     }
     .col {
       flex: 1;
     }
-
     .snippet-body {
       display: flex;
       flex-direction: row;
@@ -33,7 +31,6 @@
       width: 100%;
       background-color: #FBFBFB;
     }
-
     .snippets {
       display: flex;
       height: 22vh;
@@ -42,7 +39,6 @@
       justify-content: flex-start;
       align-items: center;
     }
-
     .snippet {
       /* display: flex; */
       margin: 0.5em;
@@ -53,16 +49,13 @@
       box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
       cursor: pointer;
     }
-
     .snippet.active {
       box-shadow: 0 0 3pt 2.2pt rgba(173, 216, 230, 0.7);
       /* border: solid red; */
     }
-
     .snippet.hover {
       box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
     }
-
     .s-title{
       padding: 3px 5px 1.5px 8px;
       font-family: PT sans;
@@ -70,7 +63,6 @@
       position: relative;
       left: -10px;
     }
-
     .btn-xs {
       background: #979797 !important;
       border: solid #979797 !important;
@@ -81,7 +73,6 @@
       border-radius: .8rem;
       width: 3.45rem;
     }
-
     .btn-xs:focus{
       outline: none !important;
       /* border: none !important; */
@@ -89,7 +80,6 @@
       box-shadow: none !important;
       pointer-events: none;
     }
-
     .s-tags{
       display: flex;
       height: 60%;
@@ -99,7 +89,6 @@
       flex-wrap: wrap;
       padding: 0px 5px 0px 5px;
     }
-
     .s-icon {
       float:left;
       position: relative;
@@ -108,17 +97,14 @@
       left: 14.5vh;
       top: 1vh;
     }
-
     .add-btn{
       width: 100%;
       height: 100%;
     }
-
     .select-btn {
       height: 100%;
       width: 100%;
     }
-
     .workspace-window{
       width: 100%;
       height: 5.5vh;
@@ -130,10 +116,7 @@
       align-items: center;
       font-size: 1.25em;
     }
-
-
     /* ////////////////////// */
-
     .editor-body{
       display: flex;
       justify-content: flex-start;
@@ -142,7 +125,6 @@
       overflow:hidden;
       padding-right:40px;
     }
-
     /* actual toolbar */
     .ql-toolbar{
       width: 100%;
@@ -151,17 +133,14 @@
       position:absolute;
       top: 27.5vh;
     }
-
     .hideToolbar {
       display: none;
     }
-
     .editor-container{
       width: 100%;
       margin: auto;
       margin-left:40px;
     }
-
     .title-row{
       display: flex;
       flex-direction: row;
@@ -170,19 +149,16 @@
       left: 1vh;
       align-items: center;
     }
-
     .editor-title{
       font-family: PT sans;
       font-size: 1.5em;
       margin-bottom:1vh;
     }
-
     .editor-tag{
       font-family: PT sans;
       font-size: 1.0em;
       padding: 0px 2em;
     }
-
     .ql-container{
       width: 100%;
       top: 6vh;
@@ -194,18 +170,15 @@
       box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.10);
       justify-content: space-around !important;
     }
-
     .ql-editor, pre.ql-syntax {
       /* display: flex;!!!no */
       padding-top: 10vh;
       padding-bottom: 5vh;
       word-wrap: break-word;
     }
-
     .ql-snow, .ql-bubble {
       background-color: #FFFFFF;
     }
-
     .compareThis-btn{
       display: block;
       position: relative;
@@ -215,7 +188,6 @@
       top: -72vh;
       align-items: center;
     }
-
     .edit-pen{
       position: relative;
       left: 11vw;
@@ -223,13 +195,11 @@
       font-size: 5vh;
       cursor: pointer;
     }
-
     .btn-compare{
       width: 100%;/*28vh;*/
       font-size: 1.6vh;
       border-radius: 20px;
     }
-
     /*  https://codepen.io/manhle/pen/JKmYzx  */
     .compareSwitch {
       position: relative;
@@ -238,11 +208,9 @@
       -moz-user-select: none;
       -ms-user-select: none;
     }
-
     .compareSwitch-checkbox {
       display: none;
     }
-
     .compareSwitch-label {
       display: block;
       overflow: hidden;
@@ -250,7 +218,6 @@
       border: 2px solid #27A1CA;
       border-radius: 0.5em; */
     }
-
     .compareSwitch-inner {
       display: block;
       width: 200%;
@@ -260,7 +227,6 @@
       -o-transition: margin 0.3s ease-in 0s;
       transition: margin 0.3s ease-in 0s;
     }
-
     .compareSwitch-inner:before,
     .compareSwitch-inner:after {
       display: block;
@@ -279,14 +245,12 @@
       border: 2px solid transparent;
       background-clip: padding-box;
     }
-
     .compareSwitch-inner:before {
       content: "Compare >>>";
       padding-left: 10px;
       background-color: #FFFFFF;
       color: #27A1CA;
     }
-
     .compareSwitch-inner:after {
       content: "<<< Edit";
       padding-right: 10px;
@@ -294,7 +258,6 @@
       color: #666666;
       text-align: right;
     }
-
     .compareSwitch-switch {
       display: block;
       width: 25px;
@@ -309,17 +272,13 @@
       -o-transition: all 0.3s ease-in 0s;
       transition: all 0.3s ease-in 0s;
     }
-
     .compareSwitch-checkbox:checked + .compareSwitch-label .compareSwitch-inner {
       margin-left: -0.5vw;
     }
-
     .compareSwitch-checkbox:checked + .compareSwitch-label .compareSwitch-switch {
       right: 0px;
     }
 }
-
-
 </style>
 
 <body>
@@ -342,11 +301,9 @@
 
 <!-- Initialize Quill editor -->
 <script>
-
   function setCheckbox(){
       $('input[type=checkbox').prop("checked", true);
     }
-
   var storage = window.sessionStorage;
   var versionlist = JSON.parse(storage.versionlist); // all versions
   var comparelist = JSON.parse(storage.comparelist); // selected ones
@@ -359,7 +316,6 @@
                       + '</button> '
     });
     if (comparelist.indexOf(element)>-1){
-
       var comparesnippet =
         '<div class = "snippet active" id='
         +element+
@@ -380,7 +336,6 @@
     };
      $('.snippets').append(comparesnippet);
   })
-
   $(".snippet").hover(function(){
       if ($(this).hasClass('active') != true){
           $(this).addClass('hover');
@@ -388,7 +343,6 @@
     }, function(){
       $(this).removeClass('hover');
   });
-
   $(".snippet").click(function(){
     var snippetclicked = Number($(this)[0].id); // snippet
     $(this).removeClass('hover');
@@ -411,36 +365,31 @@
       $(this).addClass('active');
     }
   });
-
          var toolbarOptions = [
           [{ 'font': [] }],
           ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
           ['blockquote', 'code-block'],
-
           [{ 'header': 1 }, { 'header': 2 }],               // custom button values
           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
           [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
           [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
           [{ 'direction': 'rtl' }],                         // text direction
-
           [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
           [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
           [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
           [{ 'align': [] }],
-
           ['clean']                                         // remove formatting button
       ];
-
   var quilllist=[];
   var dicMe = {};
   var indexArray = [];
+  var temstorage = {};
   initialeditor();
-
   function initialeditor(){
     $('.editor-body').html('');
     quilllist = [];
     dicMe={};
+    temstorage = {};
     comparelist.forEach(function(element, index) {
       var selectedsnippet = JSON.parse(storage[element]);
       var editorid = '.editor'+index;
@@ -482,13 +431,11 @@
       };
         var noSelected = 0;
         $($(".ql-toolbar")[1]).addClass('hideToolbar');
-
   //dictMe should retrieved from the database
     quilllist.forEach(function(element, index) {
       dicMe[index+1] = element.getText();
     })
     indexArray = quilllist;
-
     $('.edit-pen').bind('click', function(){
       comparelist.forEach(function(element, index) {
         var thissnippet = JSON.parse(storage[element]);
@@ -498,17 +445,19 @@
       });
       window.location.href='../?version='+$(this)[0].id;
     });
-
     //switch buttons -- start: compare == yes
         $('input[type=checkbox').click(function(){
+          id = parseInt($(this).attr('id')) + 1
               if ( $(this)[0].checked ){ //== true, set all others to be false
-                console.log("true");
-                $('input[type=checkbox').prop('checked', false);
-                $('input[type=checkbox').attr("checked",false)
+                console.log("A");
+                console.log(id);
+                $('input[type=checkbox').prop('checked', true);
+                $('input[type=checkbox').attr("checked",true)
                 $(this).prop('checked', true);
                 $(this).attr("checked",true)
               } else { // if compare == yes, then want to go to edit == no
-                 console.log("false");
+                console.log("B");
+                console.log(id);
                 $('input[type=checkbox').prop('checked', true);
                 $('input[type=checkbox').attr("checked",true)
                 $(this).prop('checked', false);
@@ -516,41 +465,36 @@
               }
             });
           //switch buttons --end
-
  // git start
-
      $('input[type="checkbox"]').click(function(){
-
-       console.log("asdf")
        id = parseInt($(this).attr('id')) + 1
-       console.log(id)
-            if($(this).prop("checked") == false){
-                 quilllist.forEach(function(element, index) {
-                  element.enable(false);
-                  dicMe[index+1] = element.getText();
-                })
-                launch(id)
+            if($(this).prop("checked") === false){
+                 if (temstorage[1]===undefined){
+                   quilllist.forEach(function(element, index) {
+                    element.enable(false);
+                    dicMe[index+1] = element.getText();
+                    });
+                   temstorage = dicMe;
+                 }else{
+                   dicMe = temstorage;
+                 }  
+                launch(id);
             }
-            else if($(this).prop("checked") == true){
+            else if($(this).prop("checked") === true){
                  quilllist.forEach(function(element, index) {
-
                   element.enable(true);
-                  element.setText(dicMe[index+1]);
+                  element.setText(temstorage[index+1]);
                 })
+               temstorage = {};
             }
-
       });
-
-
   diff_match_patch.prototype.diff_to_getDifference = function(diffs,child) {
     results = ""
-
     var currentQuill = indexArray[child-1]
     idx = 0
     for (var x = 0; x < diffs.length; x++) {
       var op = diffs[x][0];    // Operation (insert, delete, equal)
       var data = diffs[x][1];  // Text of change.
-
       results += data
       switch (op) {
         case 1:
@@ -571,23 +515,13 @@
       }
       idx += data.length
     }
-
-
     return results
-
   }
-
-
-
   var dmp = new diff_match_patch();
   dmp.Diff_Timeout = 1
   dmp.Diff_EditCost = 4
-
   function launch(master) {
-
     var masterText = dicMe[master]
-
-
     for (let key = 1; key <= indexArray.length; key++) {
       if (key == master){
         var masterQuill = indexArray[key-1]
@@ -597,9 +531,7 @@
       }
       var currentQuill = indexArray[key-1]
       currentQuill.setText("")
-
       var currentText = dicMe[key]
-
       // console.log("Look at here" + currentText)
       // console.log("masterText" + masterText)
       // console.log("currentText"+ currentText)
@@ -607,7 +539,6 @@
       dmp.diff_cleanupSemantic(d);
       dmp.diff_to_getDifference(d,key);
     }
-
   }
   };
 </script>
