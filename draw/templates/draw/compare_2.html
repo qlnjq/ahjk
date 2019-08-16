@@ -452,39 +452,14 @@
       });
       window.location.href='../?version='+$(this)[0].id;
     });
-<<<<<<< HEAD
 
-    //switch buttons -- start: compare == yes
+        //switch buttons -- start: compare == yes
         $('input[type=checkbox').click(function(){
           var element = document.getElementsByClassName('ql-container');
           var elID = parseInt($(this).attr('id'));
               if ( $(this)[0].checked ){ //== true, set all others to be false
-                $('input[type=checkbox').prop('checked', false);
-                $('input[type=checkbox').attr("checked",false)
-                $(this).prop('checked', true);
-                $(this).attr("checked",true)
-                
-//                 if (element[elID].classList.contains("active")){
-//                   console.log("hello")
-//                   element[elID].classList.remove("active")
-//                   console.log(element[elID])
-//                 }
-                
-                if (element[elID].classList.contains("active")){
-                      for (var x = 0; x < quilllist.length; x++) {
-                        element[x].classList.remove("active");
-                        console.log("hello");
-                      }
-                      // element[elID].classList.remove("active")
-                }
-              } else { // if shows compare == yes, then want to go to edit == no
-    //switch buttons -- start: compare == yes
-        $('input[type=checkbox').click(function(){
-          var element = document.getElementsByClassName('ql-container');
-          var elID = parseInt($(this).attr('id'));
-              if ( $(this)[0].checked ){ //== true, set all others to be false
-                $('input[type=checkbox').prop('checked', false);
-                $('input[type=checkbox').attr("checked",false)
+                $('input[type=checkbox').prop('checked', true);
+                $('input[type=checkbox').attr("checked",true)
                 $(this).prop('checked', true);
                 $(this).attr("checked",true)
                 
@@ -501,11 +476,19 @@
                 $(this).attr("checked",false)
                 
                 if (!(element[elID].classList.contains("active"))){
+                  
+                  for (var x = 0; x < quilllist.length; x++) {
+                        element[x].classList.remove("active");
+                        console.log("hello");
+                      }
+                  
                   element[elID].className += " active";
+                  
                 }
               }
             });
           //switch buttons --end
+    
  // git start
      $('input[type="checkbox"]').click(function(){
        id = parseInt($(this).attr('id')) + 1
