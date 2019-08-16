@@ -310,6 +310,13 @@
       $('input[type=checkbox').prop("checked", true);
     }
   
+  function toolBarHide(){
+    for (var x = 0; x < quilllist.length; x++) {
+        if (x != 0)
+          $($(".ql-toolbar")[x]).addClass('hideToolbar');
+      }
+  }
+  
   var storage = window.sessionStorage;
   var versionlist = JSON.parse(storage.versionlist); // all versions
   var comparelist = JSON.parse(storage.comparelist); // selected ones
@@ -428,6 +435,7 @@
         });
       quilllist[index].setContents(selectedsnippet.text.ops);
       setCheckbox();
+      toolBarHide();
     });
      if (comparelist.length ===3){
         $('.compareThis-btn').css({'left':'12vw'});
@@ -488,6 +496,21 @@
               }
             });
           //switch buttons --end
+    
+    $(".ql-editor").click(function(){ //hide others and only show this one
+      var elID = $($($(this).parent().parent())[0].childNodes[3].childNodes[0].childNodes[0]).attr('id')
+//       console.log(elID.attr('id'))
+//       console.log(elID)
+      for (var x = 0; x < quilllist.length; x++) {
+        console.log(quilllist.length)
+        if (x != elID) {
+          if (!($($(".ql-toolbar")[x]).hasClass('hideToolbar')))
+            $($(".ql-toolbar")[x]).addClass('hideToolbar');
+        }
+      }
+      if (!($($(".ql-toolbar")[x]).hasClass('hideToolbar')))
+        $($(".ql-toolbar")[elID]).removeClass('hideToolbar');
+    });
     
  // git start
      $('input[type="checkbox"]').click(function(){
