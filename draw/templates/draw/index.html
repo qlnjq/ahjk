@@ -294,7 +294,7 @@
 
       change = new Delta();
     }
-  }, 5*1000);
+  }, 2*1000);
 
 // Check for unsaved data
 window.onbeforeunload = function() {
@@ -352,28 +352,29 @@ window.onbeforeunload = function() {
     var storage=window.sessionStorage;
     storage.clear();
     var alltags = ['happy', 'sad', 'draft'];
-    var version_1={
-      title:'Version1',
-      text:{"ops":[{"insert":"This is version 1!\n"}]},
-      unformattext:'This is version 1!\n',
-      tag:['draft','sad'],
-      modified:'8/10/2019',
-      created:'8/8/2019'
-    };
-    var version_2={
-      title:'Version2',
-      text:{"ops":[{"insert":"This is version 2!\n"}]},
-      unformattext:'This is version 2!\n',
-      tag:['happy'],
-      modified:'8/11/2019',
-      created:'8/9/2019'
-    };
-    var versionname_1 = Math.random();
-    var versionname_2 = Math.random();
-    var versionlist = [versionname_1,versionname_2];
+//     var version_1={
+//       title:'Version1',
+//       text:{"ops":[{"insert":"This is version 1!\n"}]},
+//       unformattext:'This is version 1!\n',
+//       tag:['draft','sad'],
+//       modified:'8/10/2019',
+//       created:'8/8/2019'
+//     };
+//     var version_2={
+//       title:'Version2',
+//       text:{"ops":[{"insert":"This is version 2!\n"}]},
+//       unformattext:'This is version 2!\n',
+//       tag:['happy'],
+//       modified:'8/11/2019',
+//       created:'8/9/2019'
+//     };
+//     var versionname_1 = Math.random();
+//     var versionname_2 = Math.random();
+//     var versionlist = [versionname_1,versionname_2];
+    var versionlist =[];
     storage['versionlist']=JSON.stringify(versionlist);
-    storage[versionname_1]=JSON.stringify(version_1);
-    storage[versionname_2]=JSON.stringify(version_2);
+//     storage[versionname_1]=JSON.stringify(version_1);
+//     storage[versionname_2]=JSON.stringify(version_2);
     storage['alltags']=JSON.stringify(alltags);
 
     var tags = [];

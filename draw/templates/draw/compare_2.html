@@ -63,7 +63,7 @@
     .s-title{
       padding: 3px 5px 1.5px 8px;
       font-family: PT sans;
-      font-size: 1.6em;
+      font-size: 1.3em;
       position: relative;
       left: -10px;
     }
@@ -523,14 +523,18 @@
       switch (op) {
         case 1:
         currentQuill.insertText(idx, data, {
-//           'background': '#adff2f'
-          'color': '#adff2f'
+          'background': '#adff2f',
+                    'strike': false,
+
+//           'color': '#adff2f'
         });
         break;
         case -1:
         currentQuill.insertText(idx, data, {
-//           'background': '#f08080'
-          'color': '#f08080'
+          'background': '#f08080',
+                    'strike': true,
+
+//           'color': '#f08080'
         });
         break;
         case 0:
